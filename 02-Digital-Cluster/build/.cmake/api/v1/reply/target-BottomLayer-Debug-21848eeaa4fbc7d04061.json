@@ -1,0 +1,749 @@
+{
+	"archive" : {},
+	"artifacts" : 
+	[
+		{
+			"path" : "BottomLayer/libBottomLayer.a"
+		}
+	],
+	"backtrace" : 4,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"_qt_internal_add_library",
+			"qt6_add_library",
+			"qt_add_library",
+			"add_dependencies",
+			"_qt_internal_write_deferred_qmlls_build_ini_file",
+			"_qt_internal_qml_copy_files_to_build_dir",
+			"qt6_add_qml_module",
+			"target_link_libraries",
+			"target_include_directories",
+			"_qt_internal_qml_type_registration",
+			"target_sources",
+			"qt6_extract_metatypes",
+			"__qt_propagate_generated_resource",
+			"_qt_internal_process_resource",
+			"qt6_add_resources",
+			"qt6_target_qml_sources",
+			"_qt_internal_target_enable_qmlcachegen",
+			"_qt_internal_expose_deferred_files_to_ide",
+			"qt6_finalize_target"
+		],
+		"files" : 
+		[
+			"/home/mustafa/Qt/6.10.2/gcc_64/lib/cmake/Qt6Core/Qt6CoreMacros.cmake",
+			"BottomLayer/CMakeLists.txt",
+			"/home/mustafa/Qt/6.10.2/gcc_64/lib/cmake/Qt6Qml/Qt6QmlMacros.cmake",
+			"/home/mustafa/Qt/6.10.2/gcc_64/lib/cmake/Qt6Qml/Qt6QmlMacros.cmake:1099:EVAL",
+			"CMakeLists.txt",
+			"/home/mustafa/Qt/6.10.2/gcc_64/lib/cmake/Qt6Core/Qt6CoreMacros.cmake:848:EVAL"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 1
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 6,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 2920,
+				"parent" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 2806,
+				"parent" : 2
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 2893,
+				"parent" : 3
+			},
+			{
+				"file" : 4
+			},
+			{
+				"file" : 4,
+				"line" : -1,
+				"parent" : 5
+			},
+			{
+				"command" : 5,
+				"file" : 3,
+				"line" : 1,
+				"parent" : 6
+			},
+			{
+				"command" : 4,
+				"file" : 2,
+				"line" : 1387,
+				"parent" : 7
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 7,
+				"parent" : 0
+			},
+			{
+				"command" : 6,
+				"file" : 2,
+				"line" : 970,
+				"parent" : 9
+			},
+			{
+				"command" : 4,
+				"file" : 2,
+				"line" : 3083,
+				"parent" : 10
+			},
+			{
+				"command" : 6,
+				"file" : 2,
+				"line" : 976,
+				"parent" : 9
+			},
+			{
+				"command" : 4,
+				"file" : 2,
+				"line" : 3083,
+				"parent" : 12
+			},
+			{
+				"command" : 8,
+				"file" : 2,
+				"line" : 618,
+				"parent" : 9
+			},
+			{
+				"command" : 10,
+				"file" : 2,
+				"line" : 835,
+				"parent" : 9
+			},
+			{
+				"command" : 9,
+				"file" : 2,
+				"line" : 4246,
+				"parent" : 15
+			},
+			{
+				"command" : 12,
+				"file" : 2,
+				"line" : 4041,
+				"parent" : 15
+			},
+			{
+				"command" : 11,
+				"file" : 0,
+				"line" : 1579,
+				"parent" : 17
+			},
+			{
+				"command" : 11,
+				"file" : 2,
+				"line" : 4207,
+				"parent" : 15
+			},
+			{
+				"command" : 15,
+				"file" : 2,
+				"line" : 887,
+				"parent" : 9
+			},
+			{
+				"command" : 14,
+				"file" : 0,
+				"line" : 405,
+				"parent" : 20
+			},
+			{
+				"command" : 13,
+				"file" : 0,
+				"line" : 2625,
+				"parent" : 21
+			},
+			{
+				"command" : 11,
+				"file" : 0,
+				"line" : 2165,
+				"parent" : 22
+			},
+			{
+				"command" : 16,
+				"file" : 2,
+				"line" : 960,
+				"parent" : 9
+			},
+			{
+				"command" : 11,
+				"file" : 2,
+				"line" : 3554,
+				"parent" : 24
+			},
+			{
+				"command" : 17,
+				"file" : 2,
+				"line" : 3691,
+				"parent" : 24
+			},
+			{
+				"command" : 11,
+				"file" : 2,
+				"line" : 1844,
+				"parent" : 26
+			},
+			{
+				"command" : 11,
+				"file" : 2,
+				"line" : 3747,
+				"parent" : 24
+			},
+			{
+				"command" : 11,
+				"file" : 2,
+				"line" : 3554,
+				"parent" : 24
+			},
+			{
+				"command" : 11,
+				"file" : 2,
+				"line" : 3747,
+				"parent" : 24
+			},
+			{
+				"command" : 11,
+				"file" : 2,
+				"line" : 3554,
+				"parent" : 24
+			},
+			{
+				"command" : 11,
+				"file" : 2,
+				"line" : 3747,
+				"parent" : 24
+			},
+			{
+				"command" : 11,
+				"file" : 2,
+				"line" : 3554,
+				"parent" : 24
+			},
+			{
+				"command" : 11,
+				"file" : 2,
+				"line" : 3747,
+				"parent" : 24
+			},
+			{
+				"command" : 11,
+				"file" : 2,
+				"line" : 3554,
+				"parent" : 24
+			},
+			{
+				"command" : 11,
+				"file" : 2,
+				"line" : 3747,
+				"parent" : 24
+			},
+			{
+				"command" : 11,
+				"file" : 2,
+				"line" : 3554,
+				"parent" : 24
+			},
+			{
+				"command" : 11,
+				"file" : 2,
+				"line" : 3747,
+				"parent" : 24
+			},
+			{
+				"command" : 15,
+				"file" : 2,
+				"line" : 3839,
+				"parent" : 24
+			},
+			{
+				"command" : 14,
+				"file" : 0,
+				"line" : 405,
+				"parent" : 39
+			},
+			{
+				"command" : 13,
+				"file" : 0,
+				"line" : 2625,
+				"parent" : 40
+			},
+			{
+				"command" : 11,
+				"file" : 0,
+				"line" : 2165,
+				"parent" : 41
+			},
+			{
+				"file" : 1,
+				"line" : -1,
+				"parent" : 0
+			},
+			{
+				"command" : 19,
+				"file" : 5,
+				"line" : 1,
+				"parent" : 43
+			},
+			{
+				"command" : 18,
+				"file" : 0,
+				"line" : 873,
+				"parent" : 44
+			},
+			{
+				"command" : 11,
+				"file" : 0,
+				"line" : 2290,
+				"parent" : 45
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-DQT_QML_DEBUG -g -fdiagnostics-color=always"
+				},
+				{
+					"backtrace" : 14,
+					"fragment" : "-fPIC"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 14,
+					"define" : "QT_CORE_LIB"
+				},
+				{
+					"backtrace" : 14,
+					"define" : "QT_NETWORK_LIB"
+				},
+				{
+					"backtrace" : 14,
+					"define" : "QT_QMLINTEGRATION_LIB"
+				},
+				{
+					"backtrace" : 14,
+					"define" : "QT_QML_LIB"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"path" : "/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/BottomLayer"
+				},
+				{
+					"path" : "/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/BottomLayer"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/BottomLayer/BottomLayer_autogen/include"
+				},
+				{
+					"backtrace" : 16,
+					"isSystem" : true,
+					"path" : "/home/mustafa/Qt/6.10.2/gcc_64/include/QtQml"
+				},
+				{
+					"backtrace" : 16,
+					"isSystem" : true,
+					"path" : "/home/mustafa/Qt/6.10.2/gcc_64/include"
+				},
+				{
+					"backtrace" : 16,
+					"isSystem" : true,
+					"path" : "/home/mustafa/Qt/6.10.2/gcc_64/include/QtCore"
+				},
+				{
+					"backtrace" : 16,
+					"isSystem" : true,
+					"path" : "/home/mustafa/Qt/6.10.2/gcc_64/mkspecs/linux-g++"
+				},
+				{
+					"backtrace" : 16,
+					"isSystem" : true,
+					"path" : "/home/mustafa/Qt/6.10.2/gcc_64/include/QtQmlIntegration"
+				},
+				{
+					"backtrace" : 16,
+					"isSystem" : true,
+					"path" : "/home/mustafa/Qt/6.10.2/gcc_64/include/QtNetwork"
+				}
+			],
+			"language" : "CXX",
+			"sourceIndexes" : 
+			[
+				0,
+				2,
+				3,
+				5,
+				6,
+				8,
+				10,
+				12,
+				14,
+				16,
+				17
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 8,
+			"id" : "generate_qmlls_build_ini_file::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 11,
+			"id" : "BottomLayer_copy_qml::@52fcdf1b50194c0c3a43"
+		},
+		{
+			"backtrace" : 13,
+			"id" : "BottomLayer_copy_res::@52fcdf1b50194c0c3a43"
+		},
+		{
+			"id" : "BottomLayer_autogen_timestamp_deps::@52fcdf1b50194c0c3a43"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "BottomLayer_autogen::@52fcdf1b50194c0c3a43"
+		}
+	],
+	"id" : "BottomLayer::@52fcdf1b50194c0c3a43",
+	"name" : "BottomLayer",
+	"nameOnDisk" : "libBottomLayer.a",
+	"paths" : 
+	{
+		"build" : "BottomLayer",
+		"source" : "BottomLayer"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files\\Generated",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				5,
+				6,
+				8,
+				10,
+				12,
+				14,
+				16,
+				17,
+				18,
+				20,
+				21
+			]
+		},
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				4,
+				7,
+				9,
+				11,
+				13,
+				15
+			]
+		},
+		{
+			"name" : "Resources",
+			"sourceIndexes" : 
+			[
+				19
+			]
+		},
+		{
+			"name" : "CMake Rules",
+			"sourceIndexes" : 
+			[
+				22,
+				23,
+				24,
+				25,
+				26,
+				27,
+				28,
+				29,
+				30,
+				31,
+				32,
+				33,
+				34
+			]
+		},
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				35,
+				36,
+				37
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 0,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "build/BottomLayer/BottomLayer_autogen/mocs_compilation.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 18,
+			"isGenerated" : true,
+			"path" : "build/BottomLayer/meta_types/qt6bottomlayer_metatypes.json.gen",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 19,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "build/BottomLayer/bottomlayer_qmltyperegistrations.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 23,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "build/BottomLayer/.qt/rcc/qrc_qmake_BottomLayer.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 25,
+			"path" : "BottomLayer/BottomLayer.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 27,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "build/BottomLayer/.rcc/qmlcache/BottomLayer_qmlcache_loader.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 28,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "build/BottomLayer/.rcc/qmlcache/BottomLayer_BottomLayer_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 29,
+			"path" : "BottomLayer/CenterInfo.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 30,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "build/BottomLayer/.rcc/qmlcache/BottomLayer_CenterInfo_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 31,
+			"path" : "BottomLayer/FuelIndicator.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 32,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "build/BottomLayer/.rcc/qmlcache/BottomLayer_FuelIndicator_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 33,
+			"path" : "BottomLayer/InfoBlock.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 34,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "build/BottomLayer/.rcc/qmlcache/BottomLayer_InfoBlock_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 35,
+			"path" : "BottomLayer/SegmentedGauge.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 36,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "build/BottomLayer/.rcc/qmlcache/BottomLayer_SegmentedGauge_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 37,
+			"path" : "BottomLayer/TempIndicator.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 38,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "build/BottomLayer/.rcc/qmlcache/BottomLayer_TempIndicator_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 42,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "build/BottomLayer/.qt/rcc/qrc_BottomLayer_raw_qml_0.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 46,
+			"isGenerated" : true,
+			"path" : "build/BottomLayer/.qt/rcc/qmake_BottomLayer.qrc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 46,
+			"isGenerated" : true,
+			"path" : "build/qml/BottomLayer/qmldir",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 46,
+			"isGenerated" : true,
+			"path" : "build/BottomLayer/.qt/rcc/BottomLayer_raw_qml_0.qrc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/BottomLayer/BottomLayer_autogen/timestamp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/BottomLayer/meta_types/qt6bottomlayer_metatypes.json.gen.rule",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/BottomLayer/bottomlayer_qmltyperegistrations.cpp.rule",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/BottomLayer/.qt/rcc/qrc_qmake_BottomLayer.cpp.rule",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/BottomLayer/.rcc/qmlcache/BottomLayer_qmlcache_loader.cpp.rule",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/BottomLayer/.rcc/qmlcache/BottomLayer_BottomLayer_qml.cpp.rule",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/BottomLayer/.rcc/qmlcache/BottomLayer_CenterInfo_qml.cpp.rule",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/BottomLayer/.rcc/qmlcache/BottomLayer_FuelIndicator_qml.cpp.rule",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/BottomLayer/.rcc/qmlcache/BottomLayer_InfoBlock_qml.cpp.rule",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/BottomLayer/.rcc/qmlcache/BottomLayer_SegmentedGauge_qml.cpp.rule",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/BottomLayer/.rcc/qmlcache/BottomLayer_TempIndicator_qml.cpp.rule",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/BottomLayer/.qt/rcc/qrc_BottomLayer_raw_qml_0.cpp.rule",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/BottomLayer/BottomLayer_autogen/timestamp.rule",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/BottomLayer/meta_types/BottomLayer_json_file_list.txt.rule",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 14,
+			"path" : "/home/mustafa/Qt/6.10.2/gcc_64/metatypes/qt6qml_metatypes.json",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 14,
+			"path" : "/home/mustafa/Qt/6.10.2/gcc_64/metatypes/qt6core_metatypes.json",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 14,
+			"path" : "/home/mustafa/Qt/6.10.2/gcc_64/metatypes/qt6network_metatypes.json",
+			"sourceGroupIndex" : 4
+		}
+	],
+	"type" : "STATIC_LIBRARY"
+}

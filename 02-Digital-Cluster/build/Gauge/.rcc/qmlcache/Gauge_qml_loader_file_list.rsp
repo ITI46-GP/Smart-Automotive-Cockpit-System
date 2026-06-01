@@ -1,0 +1,14 @@
+--resource
+/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Gauge/.qt/rcc/qmake_Gauge.qrc
+--resource
+/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Gauge/.qt/rcc/Gauge_raw_qml_0.qrc
+/qt/qml/Gauge/GaugeActiveArc.qml
+/qt/qml/Gauge/GaugeGearBadge.qml
+/qt/qml/Gauge/GaugeInnerDisc.qml
+/qt/qml/Gauge/GaugeLabels.qml
+/qt/qml/Gauge/GaugeModeBadge.qml
+/qt/qml/Gauge/GaugeNeedle.qml
+/qt/qml/Gauge/GaugeRedlineZone.qml
+/qt/qml/Gauge/GaugeSpeedLimitBadge.qml
+/qt/qml/Gauge/GaugeSpeedNumber.qml
+/qt/qml/Gauge/GaugeTickMarks.qml

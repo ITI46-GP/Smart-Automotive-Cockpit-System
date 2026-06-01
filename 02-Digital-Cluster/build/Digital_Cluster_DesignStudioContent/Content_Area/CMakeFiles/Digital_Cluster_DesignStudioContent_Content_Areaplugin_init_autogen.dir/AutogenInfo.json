@@ -1,0 +1,157 @@
+{
+	"BUILD_DIR" : "/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/Digital_Cluster_DesignStudioContent_Content_Areaplugin_init_autogen",
+	"CMAKE_BINARY_DIR" : "/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Digital_Cluster_DesignStudioContent/Content_Area",
+	"CMAKE_EXECUTABLE" : "/home/mustafa/Qt/Tools/CMake/bin/cmake",
+	"CMAKE_LIST_FILES" : 
+	[
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Digital_Cluster_DesignStudioContent/Content_Area/CMakeLists.txt",
+		"/home/mustafa/Qt/6.10.2/gcc_64/lib/cmake/Qt6Core/Qt6CoreConfigureFileTemplate.in",
+		"/home/mustafa/Qt/6.10.2/gcc_64/lib/cmake/Qt6Core/Qt6CoreResourceInit.in.cpp",
+		"/home/mustafa/Qt/6.10.2/gcc_64/lib/cmake/Qt6Qml/Qt6QmlPluginTemplate.cpp.in",
+		"/home/mustafa/Qt/6.10.2/gcc_64/lib/cmake/Qt6Qml/Qt6QmlModuleDirMappingTemplate.qrc.in",
+		"/home/mustafa/Qt/6.10.2/gcc_64/lib/cmake/Qt6Core/Qt6CoreConfigureFileTemplate.in",
+		"/home/mustafa/Qt/6.10.2/gcc_64/lib/cmake/Qt6Core/Qt6CoreResourceInit.in.cpp",
+		"/home/mustafa/Qt/6.10.2/gcc_64/lib/cmake/Qt6Qml/Qt6qmldirTemplate.cmake.in",
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/Digital_Cluster_DesignStudioContent_Content_Areaplugin_Digital_Cluster_DesignStudioContent_Content_AreaPlugin_in.cpp"
+	],
+	"CMAKE_SOURCE_DIR" : "/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster",
+	"CROSS_CONFIG" : false,
+	"DEP_FILE" : "/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/Digital_Cluster_DesignStudioContent_Content_Areaplugin_init_autogen/deps",
+	"DEP_FILE_RULE_NAME" : "Digital_Cluster_DesignStudioContent_Content_Areaplugin_init_autogen/timestamp",
+	"HEADERS" : [],
+	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
+	"INCLUDE_DIR" : "/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/Digital_Cluster_DesignStudioContent_Content_Areaplugin_init_autogen/include",
+	"MOC_COMPILATION_FILE" : "/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/Digital_Cluster_DesignStudioContent_Content_Areaplugin_init_autogen/mocs_compilation.cpp",
+	"MOC_DEFINITIONS" : 
+	[
+		"QT_CORE_LIB",
+		"QT_DEPRECATED_WARNINGS",
+		"QT_NETWORK_LIB",
+		"QT_PLUGIN",
+		"QT_QMLINTEGRATION_LIB",
+		"QT_QML_LIB",
+		"QT_STATICPLUGIN"
+	],
+	"MOC_DEPEND_FILTERS" : 
+	[
+		[
+			"Q_PLUGIN_METADATA",
+			"[\n][ \t]*Q_PLUGIN_METADATA[ \t]*\\([^\\)]*FILE[ \t]*\"([^\"]+)\""
+		]
+	],
+	"MOC_INCLUDES" : 
+	[
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area",
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Digital_Cluster_DesignStudioContent/Content_Area",
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/Digital_Cluster_DesignStudioContent_Content_Areaplugin_autogen/include",
+		"/home/mustafa/Qt/6.10.2/gcc_64/include/QtQml",
+		"/home/mustafa/Qt/6.10.2/gcc_64/include/QtQmlIntegration",
+		"/home/mustafa/Qt/6.10.2/gcc_64/include/QtNetwork",
+		"/home/mustafa/Qt/6.10.2/gcc_64/include",
+		"/home/mustafa/Qt/6.10.2/gcc_64/include/QtCore",
+		"/home/mustafa/Qt/6.10.2/gcc_64/mkspecs/linux-g++",
+		"/usr/include/c++/11",
+		"/usr/include/x86_64-linux-gnu/c++/11",
+		"/usr/include/c++/11/backward",
+		"/usr/lib/gcc/x86_64-linux-gnu/11/include",
+		"/usr/local/include",
+		"/usr/include/x86_64-linux-gnu",
+		"/usr/include"
+	],
+	"MOC_MACRO_NAMES" : 
+	[
+		"Q_OBJECT",
+		"Q_GADGET",
+		"Q_NAMESPACE",
+		"Q_NAMESPACE_EXPORT",
+		"Q_GADGET_EXPORT",
+		"Q_ENUM_NS"
+	],
+	"MOC_OPTIONS" : [ "--output-json" ],
+	"MOC_PATH_PREFIX" : false,
+	"MOC_PREDEFS_CMD" : 
+	[
+		"/bin/g++",
+		"-dM",
+		"-E",
+		"-c",
+		"/home/mustafa/Qt/Tools/CMake/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp"
+	],
+	"MOC_PREDEFS_FILE" : "/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/Digital_Cluster_DesignStudioContent_Content_Areaplugin_init_autogen/moc_predefs.h",
+	"MOC_RELAXED_MODE" : false,
+	"MOC_SKIP" : 
+	[
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/.qt/rcc/qrc_Digital_Cluster_DesignStudioContent_Content_Area_raw_qml_0.cpp",
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/.qt/rcc/qrc_Digital_Cluster_DesignStudioContent_Content_Area_raw_qml_0_init.cpp",
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/.qt/rcc/qrc_qmake_Digital_Cluster_DesignStudioContent_Content_Area.cpp",
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/.qt/rcc/qrc_qmake_Digital_Cluster_DesignStudioContent_Content_Area_init.cpp",
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/.rcc/qmlcache/Digital_Cluster_DesignStudioContent_Content_Area_BottomBarItem_qml.cpp",
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/.rcc/qmlcache/Digital_Cluster_DesignStudioContent_Content_Area_BottomBar_qml.cpp",
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/.rcc/qmlcache/Digital_Cluster_DesignStudioContent_Content_Area_CarView_qml.cpp",
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/.rcc/qmlcache/Digital_Cluster_DesignStudioContent_Content_Area_Car_qml.cpp",
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/.rcc/qmlcache/Digital_Cluster_DesignStudioContent_Content_Area_ContactItem_qml.cpp",
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/.rcc/qmlcache/Digital_Cluster_DesignStudioContent_Content_Area_ContactsView_qml.cpp",
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/.rcc/qmlcache/Digital_Cluster_DesignStudioContent_Content_Area_FuelStatItem_qml.cpp",
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/.rcc/qmlcache/Digital_Cluster_DesignStudioContent_Content_Area_FuelView_qml.cpp",
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/.rcc/qmlcache/Digital_Cluster_DesignStudioContent_Content_Area_MapView_qml.cpp",
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/.rcc/qmlcache/Digital_Cluster_DesignStudioContent_Content_Area_MusicView_qml.cpp",
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/.rcc/qmlcache/Digital_Cluster_DesignStudioContent_Content_Area_Road_qml.cpp",
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/.rcc/qmlcache/Digital_Cluster_DesignStudioContent_Content_Area_SettingItem_qml.cpp",
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/.rcc/qmlcache/Digital_Cluster_DesignStudioContent_Content_Area_SettingsView_qml.cpp",
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/.rcc/qmlcache/Digital_Cluster_DesignStudioContent_Content_Area_TopBarButton_qml.cpp",
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/.rcc/qmlcache/Digital_Cluster_DesignStudioContent_Content_Area_TopBar_qml.cpp",
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/.rcc/qmlcache/Digital_Cluster_DesignStudioContent_Content_Area_qmlcache_loader.cpp",
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/Digital_Cluster_DesignStudioContent_Content_Area_autogen/mocs_compilation.cpp",
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/Digital_Cluster_DesignStudioContent_Content_Areaplugin_autogen/mocs_compilation.cpp",
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/digital_cluster_designstudiocontent_content_area_qmltyperegistrations.cpp"
+	],
+	"MULTI_CONFIG" : false,
+	"PARALLEL" : 6,
+	"PARSE_CACHE_FILE" : "/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/CMakeFiles/Digital_Cluster_DesignStudioContent_Content_Areaplugin_init_autogen.dir/ParseCache.txt",
+	"QT_MOC_EXECUTABLE" : "/home/mustafa/Qt/6.10.2/gcc_64/libexec/moc",
+	"QT_UIC_EXECUTABLE" : "/home/mustafa/Qt/6.10.2/gcc_64/libexec/uic",
+	"QT_VERSION_MAJOR" : 6,
+	"QT_VERSION_MINOR" : 10,
+	"SETTINGS_FILE" : "/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/CMakeFiles/Digital_Cluster_DesignStudioContent_Content_Areaplugin_init_autogen.dir/AutogenUsed.txt",
+	"SOURCES" : 
+	[
+		[
+			"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/Digital_Cluster_DesignStudioContent_Content_Areaplugin_init.cpp",
+			"MU",
+			null
+		]
+	],
+	"UIC_OPTIONS" : [],
+	"UIC_SEARCH_PATHS" : [],
+	"UIC_SKIP" : 
+	[
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/.qt/rcc/qrc_Digital_Cluster_DesignStudioContent_Content_Area_raw_qml_0.cpp",
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/.qt/rcc/qrc_Digital_Cluster_DesignStudioContent_Content_Area_raw_qml_0_init.cpp",
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/.qt/rcc/qrc_qmake_Digital_Cluster_DesignStudioContent_Content_Area.cpp",
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/.qt/rcc/qrc_qmake_Digital_Cluster_DesignStudioContent_Content_Area_init.cpp",
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/.rcc/qmlcache/Digital_Cluster_DesignStudioContent_Content_Area_BottomBarItem_qml.cpp",
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/.rcc/qmlcache/Digital_Cluster_DesignStudioContent_Content_Area_BottomBar_qml.cpp",
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/.rcc/qmlcache/Digital_Cluster_DesignStudioContent_Content_Area_CarView_qml.cpp",
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/.rcc/qmlcache/Digital_Cluster_DesignStudioContent_Content_Area_Car_qml.cpp",
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/.rcc/qmlcache/Digital_Cluster_DesignStudioContent_Content_Area_ContactItem_qml.cpp",
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/.rcc/qmlcache/Digital_Cluster_DesignStudioContent_Content_Area_ContactsView_qml.cpp",
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/.rcc/qmlcache/Digital_Cluster_DesignStudioContent_Content_Area_FuelStatItem_qml.cpp",
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/.rcc/qmlcache/Digital_Cluster_DesignStudioContent_Content_Area_FuelView_qml.cpp",
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/.rcc/qmlcache/Digital_Cluster_DesignStudioContent_Content_Area_MapView_qml.cpp",
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/.rcc/qmlcache/Digital_Cluster_DesignStudioContent_Content_Area_MusicView_qml.cpp",
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/.rcc/qmlcache/Digital_Cluster_DesignStudioContent_Content_Area_Road_qml.cpp",
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/.rcc/qmlcache/Digital_Cluster_DesignStudioContent_Content_Area_SettingItem_qml.cpp",
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/.rcc/qmlcache/Digital_Cluster_DesignStudioContent_Content_Area_SettingsView_qml.cpp",
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/.rcc/qmlcache/Digital_Cluster_DesignStudioContent_Content_Area_TopBarButton_qml.cpp",
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/.rcc/qmlcache/Digital_Cluster_DesignStudioContent_Content_Area_TopBar_qml.cpp",
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/.rcc/qmlcache/Digital_Cluster_DesignStudioContent_Content_Area_qmlcache_loader.cpp",
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/Digital_Cluster_DesignStudioContent_Content_Area_autogen/mocs_compilation.cpp",
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/Digital_Cluster_DesignStudioContent_Content_Areaplugin_autogen/mocs_compilation.cpp",
+		"/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Digital_Cluster_DesignStudioContent/Content_Area/digital_cluster_designstudiocontent_content_area_qmltyperegistrations.cpp"
+	],
+	"UIC_UI_FILES" : [],
+	"USE_BETTER_GRAPH" : true,
+	"VERBOSITY" : 0
+}

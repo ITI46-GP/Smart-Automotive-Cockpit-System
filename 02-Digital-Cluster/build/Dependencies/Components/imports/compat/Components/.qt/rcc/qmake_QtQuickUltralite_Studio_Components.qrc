@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/qt-project.org/imports/QtQuickUltralite/Studio/Components">
+    <file alias="qmldir">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/qml/QtQuickUltralite/Studio/Components/qmldir</file>
+  </qresource>
+</RCC>
+

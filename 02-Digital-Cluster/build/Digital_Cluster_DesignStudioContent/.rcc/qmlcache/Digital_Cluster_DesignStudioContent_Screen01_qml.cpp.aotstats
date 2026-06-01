@@ -1,0 +1,631 @@
+{
+    "formatRevision": 1,
+    "modules": [
+        {
+            "moduleFiles": [
+                {
+                    "entries": [
+                        {
+                            "codegenResult": 0,
+                            "column": 12,
+                            "durationMicroseconds": 1000,
+                            "functionName": "width",
+                            "line": 16,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 13,
+                            "durationMicroseconds": 0,
+                            "functionName": "height",
+                            "line": 17,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 30,
+                            "durationMicroseconds": 0,
+                            "functionName": "simMode",
+                            "line": 28,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 22,
+                            "durationMicroseconds": 1000,
+                            "functionName": "onTriggered",
+                            "line": 39,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 39,
+                            "durationMicroseconds": 0,
+                            "functionName": "target",
+                            "line": 62,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 119,
+                            "durationMicroseconds": 0,
+                            "functionName": "type",
+                            "line": 62,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 39,
+                            "durationMicroseconds": 0,
+                            "functionName": "target",
+                            "line": 63,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 114,
+                            "durationMicroseconds": 0,
+                            "functionName": "type",
+                            "line": 63,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 39,
+                            "durationMicroseconds": 0,
+                            "functionName": "target",
+                            "line": 64,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 39,
+                            "durationMicroseconds": 0,
+                            "functionName": "target",
+                            "line": 67,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 119,
+                            "durationMicroseconds": 0,
+                            "functionName": "type",
+                            "line": 67,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 39,
+                            "durationMicroseconds": 0,
+                            "functionName": "target",
+                            "line": 68,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 115,
+                            "durationMicroseconds": 0,
+                            "functionName": "type",
+                            "line": 68,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 39,
+                            "durationMicroseconds": 0,
+                            "functionName": "target",
+                            "line": 69,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 39,
+                            "durationMicroseconds": 0,
+                            "functionName": "target",
+                            "line": 72,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 120,
+                            "durationMicroseconds": 0,
+                            "functionName": "type",
+                            "line": 72,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 39,
+                            "durationMicroseconds": 0,
+                            "functionName": "target",
+                            "line": 73,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 39,
+                            "durationMicroseconds": 0,
+                            "functionName": "target",
+                            "line": 75,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 112,
+                            "durationMicroseconds": 0,
+                            "functionName": "type",
+                            "line": 75,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 39,
+                            "durationMicroseconds": 0,
+                            "functionName": "target",
+                            "line": 76,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 39,
+                            "durationMicroseconds": 0,
+                            "functionName": "target",
+                            "line": 78,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 115,
+                            "durationMicroseconds": 0,
+                            "functionName": "type",
+                            "line": 78,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 39,
+                            "durationMicroseconds": 0,
+                            "functionName": "target",
+                            "line": 79,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 38,
+                            "durationMicroseconds": 0,
+                            "functionName": "target",
+                            "line": 84,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 38,
+                            "durationMicroseconds": 0,
+                            "functionName": "target",
+                            "line": 85,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 47,
+                            "durationMicroseconds": 0,
+                            "functionName": "target",
+                            "line": 90,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 132,
+                            "durationMicroseconds": 0,
+                            "functionName": "type",
+                            "line": 90,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 47,
+                            "durationMicroseconds": 0,
+                            "functionName": "target",
+                            "line": 91,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 132,
+                            "durationMicroseconds": 0,
+                            "functionName": "type",
+                            "line": 91,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 47,
+                            "durationMicroseconds": 0,
+                            "functionName": "target",
+                            "line": 95,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 128,
+                            "durationMicroseconds": 0,
+                            "functionName": "type",
+                            "line": 95,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 47,
+                            "durationMicroseconds": 0,
+                            "functionName": "target",
+                            "line": 96,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 128,
+                            "durationMicroseconds": 0,
+                            "functionName": "type",
+                            "line": 96,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 38,
+                            "durationMicroseconds": 0,
+                            "functionName": "target",
+                            "line": 100,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 38,
+                            "durationMicroseconds": 0,
+                            "functionName": "target",
+                            "line": 101,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 1,
+                            "column": 21,
+                            "durationMicroseconds": 0,
+                            "functionName": "script",
+                            "line": 106,
+                            "message": "Skipped code generation for binding for property of type QQmlScriptString; nothing to do."
+                        },
+                        {
+                            "codegenResult": 1,
+                            "column": 23,
+                            "durationMicroseconds": 0,
+                            "functionName": "left",
+                            "line": 115,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 1,
+                            "column": 24,
+                            "durationMicroseconds": 0,
+                            "functionName": "right",
+                            "line": 116,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 1,
+                            "column": 22,
+                            "durationMicroseconds": 0,
+                            "functionName": "top",
+                            "line": 117,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 1,
+                            "column": 25,
+                            "durationMicroseconds": 0,
+                            "functionName": "bottom",
+                            "line": 118,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 1,
+                            "column": 26,
+                            "durationMicroseconds": 0,
+                            "functionName": "visible",
+                            "line": 162,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 1,
+                            "column": 31,
+                            "durationMicroseconds": 0,
+                            "functionName": "left",
+                            "line": 163,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 1,
+                            "column": 32,
+                            "durationMicroseconds": 0,
+                            "functionName": "right",
+                            "line": 164,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 1,
+                            "column": 26,
+                            "durationMicroseconds": 0,
+                            "functionName": "visible",
+                            "line": 171,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 1,
+                            "column": 31,
+                            "durationMicroseconds": 0,
+                            "functionName": "fill",
+                            "line": 172,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 1,
+                            "column": 26,
+                            "durationMicroseconds": 0,
+                            "functionName": "visible",
+                            "line": 176,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 1,
+                            "column": 31,
+                            "durationMicroseconds": 0,
+                            "functionName": "left",
+                            "line": 177,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 1,
+                            "column": 32,
+                            "durationMicroseconds": 0,
+                            "functionName": "right",
+                            "line": 178,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 1,
+                            "column": 30,
+                            "durationMicroseconds": 0,
+                            "functionName": "top",
+                            "line": 179,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 1,
+                            "column": 33,
+                            "durationMicroseconds": 0,
+                            "functionName": "bottom",
+                            "line": 180,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 1,
+                            "column": 26,
+                            "durationMicroseconds": 0,
+                            "functionName": "visible",
+                            "line": 188,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 1,
+                            "column": 31,
+                            "durationMicroseconds": 0,
+                            "functionName": "fill",
+                            "line": 189,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 1,
+                            "column": 26,
+                            "durationMicroseconds": 0,
+                            "functionName": "visible",
+                            "line": 194,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 1,
+                            "column": 30,
+                            "durationMicroseconds": 0,
+                            "functionName": "fuelPercent",
+                            "line": 195,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 1,
+                            "column": 31,
+                            "durationMicroseconds": 0,
+                            "functionName": "fill",
+                            "line": 193,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 1,
+                            "column": 26,
+                            "durationMicroseconds": 0,
+                            "functionName": "visible",
+                            "line": 200,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 1,
+                            "column": 31,
+                            "durationMicroseconds": 0,
+                            "functionName": "fill",
+                            "line": 199,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 1,
+                            "column": 23,
+                            "durationMicroseconds": 0,
+                            "functionName": "rpmValue",
+                            "line": 220,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 1,
+                            "column": 24,
+                            "durationMicroseconds": 0,
+                            "functionName": "driveMode",
+                            "line": 221,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 1,
+                            "column": 22,
+                            "durationMicroseconds": 0,
+                            "functionName": "currentView",
+                            "line": 236,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 1,
+                            "column": 25,
+                            "durationMicroseconds": 0,
+                            "functionName": "onViewSelected",
+                            "line": 237,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 1,
+                            "column": 25,
+                            "durationMicroseconds": 0,
+                            "functionName": "onViewSelected",
+                            "line": 237,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 1,
+                            "column": 35,
+                            "durationMicroseconds": 0,
+                            "functionName": "horizontalCenter",
+                            "line": 232,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 1,
+                            "column": 22,
+                            "durationMicroseconds": 0,
+                            "functionName": "top",
+                            "line": 233,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 1,
+                            "column": 22,
+                            "durationMicroseconds": 0,
+                            "functionName": "fuelPercent",
+                            "line": 264,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 1,
+                            "column": 22,
+                            "durationMicroseconds": 0,
+                            "functionName": "rangeKm",
+                            "line": 265,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 1,
+                            "column": 23,
+                            "durationMicroseconds": 0,
+                            "functionName": "left",
+                            "line": 250,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 1,
+                            "column": 24,
+                            "durationMicroseconds": 0,
+                            "functionName": "right",
+                            "line": 251,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 1,
+                            "column": 25,
+                            "durationMicroseconds": 0,
+                            "functionName": "bottom",
+                            "line": 252,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 1,
+                            "column": 28,
+                            "durationMicroseconds": 0,
+                            "functionName": "onStartupComplete",
+                            "line": 279,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 1,
+                            "column": 23,
+                            "durationMicroseconds": 0,
+                            "functionName": "fill",
+                            "line": 276,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 1,
+                            "column": 35,
+                            "durationMicroseconds": 0,
+                            "functionName": "horizontalCenter",
+                            "line": 287,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 1,
+                            "column": 22,
+                            "durationMicroseconds": 0,
+                            "functionName": "top",
+                            "line": 288,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 1,
+                            "column": 23,
+                            "durationMicroseconds": 0,
+                            "functionName": "fillMode",
+                            "line": 299,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 1,
+                            "column": 31,
+                            "durationMicroseconds": 0,
+                            "functionName": "alignment",
+                            "line": 297,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 1,
+                            "column": 23,
+                            "durationMicroseconds": 0,
+                            "functionName": "fillMode",
+                            "line": 310,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 1,
+                            "column": 31,
+                            "durationMicroseconds": 0,
+                            "functionName": "alignment",
+                            "line": 308,
+                            "message": ""
+                        }
+                    ],
+                    "filePath": "/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Digital_Cluster_DesignStudioContent/Screen01.qml"
+                }
+            ],
+            "moduleId": "Digital_Cluster_DesignStudioContent(Digital_Cluster_DesignStudioContent)"
+        }
+    ]
+}

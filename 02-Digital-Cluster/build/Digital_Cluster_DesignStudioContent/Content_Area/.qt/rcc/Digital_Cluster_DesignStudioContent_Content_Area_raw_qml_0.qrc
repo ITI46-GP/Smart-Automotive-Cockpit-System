@@ -1,0 +1,20 @@
+<RCC>
+  <qresource prefix="/qt/qml/Digital_Cluster_DesignStudioContent/Content_Area/">
+    <file alias="BottomBar.qml">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Digital_Cluster_DesignStudioContent/Content_Area/BottomBar.qml</file>
+    <file alias="BottomBarItem.qml">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Digital_Cluster_DesignStudioContent/Content_Area/BottomBarItem.qml</file>
+    <file alias="Car.qml">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Digital_Cluster_DesignStudioContent/Content_Area/Car.qml</file>
+    <file alias="CarView.qml">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Digital_Cluster_DesignStudioContent/Content_Area/CarView.qml</file>
+    <file alias="ContactItem.qml">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Digital_Cluster_DesignStudioContent/Content_Area/ContactItem.qml</file>
+    <file alias="ContactsView.qml">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Digital_Cluster_DesignStudioContent/Content_Area/ContactsView.qml</file>
+    <file alias="FuelStatItem.qml">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Digital_Cluster_DesignStudioContent/Content_Area/FuelStatItem.qml</file>
+    <file alias="FuelView.qml">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Digital_Cluster_DesignStudioContent/Content_Area/FuelView.qml</file>
+    <file alias="MapView.qml">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Digital_Cluster_DesignStudioContent/Content_Area/MapView.qml</file>
+    <file alias="MusicView.qml">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Digital_Cluster_DesignStudioContent/Content_Area/MusicView.qml</file>
+    <file alias="Road.qml">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Digital_Cluster_DesignStudioContent/Content_Area/Road.qml</file>
+    <file alias="SettingItem.qml">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Digital_Cluster_DesignStudioContent/Content_Area/SettingItem.qml</file>
+    <file alias="SettingsView.qml">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Digital_Cluster_DesignStudioContent/Content_Area/SettingsView.qml</file>
+    <file alias="TopBar.qml">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Digital_Cluster_DesignStudioContent/Content_Area/TopBar.qml</file>
+    <file alias="TopBarButton.qml">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Digital_Cluster_DesignStudioContent/Content_Area/TopBarButton.qml</file>
+  </qresource>
+</RCC>
+

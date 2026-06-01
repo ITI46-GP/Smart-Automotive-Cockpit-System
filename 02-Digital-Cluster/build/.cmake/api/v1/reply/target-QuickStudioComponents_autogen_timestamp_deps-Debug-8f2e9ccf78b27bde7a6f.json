@@ -1,0 +1,82 @@
+{
+	"backtrace" : 0,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_dependencies",
+			"_qt_internal_qml_copy_files_to_build_dir",
+			"qt6_add_qml_module"
+		],
+		"files" : 
+		[
+			"Dependencies/Components/imports/components/CMakeLists.txt",
+			"/home/mustafa/Qt/6.10.2/gcc_64/lib/cmake/Qt6Qml/Qt6QmlMacros.cmake"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 2,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 970,
+				"parent" : 1
+			},
+			{
+				"command" : 0,
+				"file" : 1,
+				"line" : 3083,
+				"parent" : 2
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 976,
+				"parent" : 1
+			},
+			{
+				"command" : 0,
+				"file" : 1,
+				"line" : 3083,
+				"parent" : 4
+			}
+		]
+	},
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 0,
+			"id" : "generate_qmlls_build_ini_file::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 3,
+			"id" : "QuickStudioComponents_copy_qml::@749c3276d580d9ca25a1"
+		},
+		{
+			"backtrace" : 5,
+			"id" : "QuickStudioComponents_copy_res::@749c3276d580d9ca25a1"
+		}
+	],
+	"folder" : 
+	{
+		"name" : "QtInternalTargets"
+	},
+	"id" : "QuickStudioComponents_autogen_timestamp_deps::@749c3276d580d9ca25a1",
+	"isGeneratorProvided" : true,
+	"name" : "QuickStudioComponents_autogen_timestamp_deps",
+	"paths" : 
+	{
+		"build" : "Dependencies/Components/imports/components",
+		"source" : "Dependencies/Components/imports/components"
+	},
+	"sources" : [],
+	"type" : "UTILITY"
+}

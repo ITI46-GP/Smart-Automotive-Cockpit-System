@@ -1,0 +1,22 @@
+module Digital_Cluster_DesignStudioContent.Content_Area
+linktarget Digital_Cluster_DesignStudioContent_Content_Areaplugin
+optional plugin Digital_Cluster_DesignStudioContent_Content_Areaplugin
+classname Digital_Cluster_DesignStudioContent_Content_AreaPlugin
+typeinfo Digital_Cluster_DesignStudioContent_Content_Area.qmltypes
+prefer :/qt/qml/Digital_Cluster_DesignStudioContent/Content_Area/
+BottomBar 1.0 BottomBar.qml
+BottomBarItem 1.0 BottomBarItem.qml
+Car 1.0 Car.qml
+CarView 1.0 CarView.qml
+ContactItem 1.0 ContactItem.qml
+ContactsView 1.0 ContactsView.qml
+FuelStatItem 1.0 FuelStatItem.qml
+FuelView 1.0 FuelView.qml
+MapView 1.0 MapView.qml
+MusicView 1.0 MusicView.qml
+Road 1.0 Road.qml
+SettingItem 1.0 SettingItem.qml
+SettingsView 1.0 SettingsView.qml
+TopBar 1.0 TopBar.qml
+TopBarButton 1.0 TopBarButton.qml
+

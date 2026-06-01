@@ -1,0 +1,12 @@
+<RCC>
+  <qresource prefix="/qt-project.org/imports/QtQuick/Studio/LogicHelper/">
+    <file alias="BidirectionalBinding.qml">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Dependencies/Components/imports/logichelper/BidirectionalBinding.qml</file>
+    <file alias="RangeMapper.qml">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Dependencies/Components/imports/logichelper/RangeMapper.qml</file>
+    <file alias="MinMaxMapper.qml">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Dependencies/Components/imports/logichelper/MinMaxMapper.qml</file>
+    <file alias="StringMapper.qml">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Dependencies/Components/imports/logichelper/StringMapper.qml</file>
+    <file alias="OrOperator.qml">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Dependencies/Components/imports/logichelper/OrOperator.qml</file>
+    <file alias="AndOperator.qml">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Dependencies/Components/imports/logichelper/AndOperator.qml</file>
+    <file alias="NotOperator.qml">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Dependencies/Components/imports/logichelper/NotOperator.qml</file>
+  </qresource>
+</RCC>
+

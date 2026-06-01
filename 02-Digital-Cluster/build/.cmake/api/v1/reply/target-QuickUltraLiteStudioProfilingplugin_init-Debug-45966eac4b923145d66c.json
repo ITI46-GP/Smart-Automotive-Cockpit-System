@@ -1,0 +1,315 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "Dependencies/Components/imports/compat/Profiling/CMakeFiles/QuickUltraLiteStudioProfilingplugin_init.dir/./QuickUltraLiteStudioProfilingplugin_init_autogen/mocs_compilation.cpp.o"
+		},
+		{
+			"path" : "Dependencies/Components/imports/compat/Profiling/CMakeFiles/QuickUltraLiteStudioProfilingplugin_init.dir/./QuickUltraLiteStudioProfilingplugin_init.cpp.o"
+		}
+	],
+	"backtrace" : 5,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"_qt_internal_add_library",
+			"qt6_add_library",
+			"__qt_internal_add_static_plugin_init_object_library",
+			"qt6_add_qml_module",
+			"set_property",
+			"_qt_internal_copy_dependency_properties",
+			"__qt_internal_propagate_object_library",
+			"target_sources",
+			"qt6_extract_metatypes",
+			"qt6_finalize_target"
+		],
+		"files" : 
+		[
+			"/home/mustafa/Qt/6.10.2/gcc_64/lib/cmake/Qt6Core/Qt6CoreMacros.cmake",
+			"/home/mustafa/Qt/6.10.2/gcc_64/lib/cmake/Qt6/QtPublicPluginHelpers.cmake",
+			"/home/mustafa/Qt/6.10.2/gcc_64/lib/cmake/Qt6Qml/Qt6QmlMacros.cmake",
+			"Dependencies/Components/imports/compat/Profiling/CMakeLists.txt",
+			"/home/mustafa/Qt/6.10.2/gcc_64/lib/cmake/Qt6Core/Qt6CoreMacros.cmake:848:EVAL"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 3
+			},
+			{
+				"command" : 4,
+				"file" : 3,
+				"line" : 2,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 2,
+				"line" : 991,
+				"parent" : 1
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 255,
+				"parent" : 2
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 2806,
+				"parent" : 3
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 2893,
+				"parent" : 4
+			},
+			{
+				"command" : 7,
+				"file" : 2,
+				"line" : 995,
+				"parent" : 1
+			},
+			{
+				"command" : 6,
+				"file" : 0,
+				"line" : 2054,
+				"parent" : 6
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 3003,
+				"parent" : 7
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 3003,
+				"parent" : 7
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 3003,
+				"parent" : 7
+			},
+			{
+				"file" : 3,
+				"line" : -1,
+				"parent" : 0
+			},
+			{
+				"command" : 10,
+				"file" : 4,
+				"line" : 1,
+				"parent" : 11
+			},
+			{
+				"command" : 9,
+				"file" : 0,
+				"line" : 909,
+				"parent" : 12
+			},
+			{
+				"command" : 8,
+				"file" : 0,
+				"line" : 1579,
+				"parent" : 13
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-DQT_QML_DEBUG -g -fdiagnostics-color=always"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "-fPIC"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 9,
+					"define" : "QT_CORE_LIB"
+				},
+				{
+					"backtrace" : 9,
+					"define" : "QT_DEPRECATED_WARNINGS"
+				},
+				{
+					"backtrace" : 9,
+					"define" : "QT_NETWORK_LIB"
+				},
+				{
+					"backtrace" : 9,
+					"define" : "QT_PLUGIN"
+				},
+				{
+					"backtrace" : 9,
+					"define" : "QT_QMLINTEGRATION_LIB"
+				},
+				{
+					"backtrace" : 9,
+					"define" : "QT_QML_LIB"
+				},
+				{
+					"backtrace" : 9,
+					"define" : "QT_STATICPLUGIN"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"path" : "/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Dependencies/Components/imports/compat/Profiling"
+				},
+				{
+					"path" : "/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Dependencies/Components/imports/compat/Profiling"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Dependencies/Components/imports/compat/Profiling/QuickUltraLiteStudioProfilingplugin_init_autogen/include"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Dependencies/Components/imports/compat/Profiling/QuickUltraLiteStudioProfilingplugin_autogen/include"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/home/mustafa/Qt/6.10.2/gcc_64/include/QtQml"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/home/mustafa/Qt/6.10.2/gcc_64/include/QtQmlIntegration"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/home/mustafa/Qt/6.10.2/gcc_64/include/QtNetwork"
+				},
+				{
+					"backtrace" : 10,
+					"isSystem" : true,
+					"path" : "/home/mustafa/Qt/6.10.2/gcc_64/include"
+				},
+				{
+					"backtrace" : 10,
+					"isSystem" : true,
+					"path" : "/home/mustafa/Qt/6.10.2/gcc_64/include/QtCore"
+				},
+				{
+					"backtrace" : 10,
+					"isSystem" : true,
+					"path" : "/home/mustafa/Qt/6.10.2/gcc_64/mkspecs/linux-g++"
+				}
+			],
+			"language" : "CXX",
+			"sourceIndexes" : 
+			[
+				0,
+				1
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"id" : "QuickUltraLiteStudioProfilingplugin_init_autogen_timestamp_deps::@18181dfaa655dadd9acd"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "QuickUltraLiteStudioProfilingplugin_init_autogen::@18181dfaa655dadd9acd"
+		}
+	],
+	"id" : "QuickUltraLiteStudioProfilingplugin_init::@18181dfaa655dadd9acd",
+	"name" : "QuickUltraLiteStudioProfilingplugin_init",
+	"paths" : 
+	{
+		"build" : "Dependencies/Components/imports/compat/Profiling",
+		"source" : "Dependencies/Components/imports/compat/Profiling"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files\\Generated",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				3
+			]
+		},
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				2
+			]
+		},
+		{
+			"name" : "CMake Rules",
+			"sourceIndexes" : 
+			[
+				4,
+				5,
+				6
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 0,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "build/Dependencies/Components/imports/compat/Profiling/QuickUltraLiteStudioProfilingplugin_init_autogen/mocs_compilation.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "build/Dependencies/Components/imports/compat/Profiling/QuickUltraLiteStudioProfilingplugin_init.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 14,
+			"isGenerated" : true,
+			"path" : "build/Dependencies/Components/imports/compat/Profiling/meta_types/qt6quickultralitestudioprofilingplugin_init_metatypes.json.gen",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Dependencies/Components/imports/compat/Profiling/QuickUltraLiteStudioProfilingplugin_init_autogen/timestamp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Dependencies/Components/imports/compat/Profiling/meta_types/qt6quickultralitestudioprofilingplugin_init_metatypes.json.gen.rule",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Dependencies/Components/imports/compat/Profiling/QuickUltraLiteStudioProfilingplugin_init_autogen/timestamp.rule",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Dependencies/Components/imports/compat/Profiling/meta_types/QuickUltraLiteStudioProfilingplugin_init_json_file_list.txt.rule",
+			"sourceGroupIndex" : 2
+		}
+	],
+	"type" : "OBJECT_LIBRARY"
+}

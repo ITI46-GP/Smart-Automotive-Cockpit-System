@@ -1,0 +1,6 @@
+QtQuick.Studio.Application(QuickStudioApplication)
+QtQuick.Studio.Effects(QuickStudioEffects)
+FlowView(FlowView)
+QtQuick.Studio.MultiText(QuickStudioMultiText)
+QtQuick.Studio.EventSimulator(QuickStudioEventSimulator)
+QtQuick.Studio.EventSystem(QuickStudioEventSystem)

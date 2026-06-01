@@ -1,0 +1,270 @@
+{
+	"archive" : {},
+	"artifacts" : 
+	[
+		{
+			"path" : "qml/QtQuick/Studio/LogicHelper/libQuickStudioLogicHelperplugin.a"
+		}
+	],
+	"backtrace" : 5,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"_qt_internal_add_library",
+			"qt6_add_plugin",
+			"qt6_add_qml_plugin",
+			"qt6_add_qml_module",
+			"target_link_libraries",
+			"target_compile_definitions",
+			"target_sources"
+		],
+		"files" : 
+		[
+			"/home/mustafa/Qt/6.10.2/gcc_64/lib/cmake/Qt6Core/Qt6CoreMacros.cmake",
+			"/home/mustafa/Qt/6.10.2/gcc_64/lib/cmake/Qt6Qml/Qt6QmlMacros.cmake",
+			"Dependencies/Components/imports/logichelper/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 2
+			},
+			{
+				"command" : 4,
+				"file" : 2,
+				"line" : 2,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 922,
+				"parent" : 1
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 2656,
+				"parent" : 2
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 2686,
+				"parent" : 3
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 2893,
+				"parent" : 4
+			},
+			{
+				"command" : 5,
+				"file" : 1,
+				"line" : 2921,
+				"parent" : 2
+			},
+			{
+				"command" : 5,
+				"file" : 1,
+				"line" : 2917,
+				"parent" : 2
+			},
+			{
+				"command" : 6,
+				"file" : 0,
+				"line" : 2770,
+				"parent" : 3
+			},
+			{
+				"command" : 6,
+				"file" : 0,
+				"line" : 2691,
+				"parent" : 3
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 2910,
+				"parent" : 2
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-DQT_QML_DEBUG -g -fdiagnostics-color=always"
+				},
+				{
+					"backtrace" : 7,
+					"fragment" : "-fPIC"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 7,
+					"define" : "QT_CORE_LIB"
+				},
+				{
+					"backtrace" : 8,
+					"define" : "QT_DEPRECATED_WARNINGS"
+				},
+				{
+					"backtrace" : 7,
+					"define" : "QT_NETWORK_LIB"
+				},
+				{
+					"backtrace" : 8,
+					"define" : "QT_PLUGIN"
+				},
+				{
+					"backtrace" : 7,
+					"define" : "QT_QMLINTEGRATION_LIB"
+				},
+				{
+					"backtrace" : 7,
+					"define" : "QT_QML_LIB"
+				},
+				{
+					"backtrace" : 9,
+					"define" : "QT_STATICPLUGIN"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"path" : "/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Dependencies/Components/imports/logichelper"
+				},
+				{
+					"path" : "/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Dependencies/Components/imports/logichelper"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Dependencies/Components/imports/logichelper/QuickStudioLogicHelperplugin_autogen/include"
+				},
+				{
+					"backtrace" : 7,
+					"isSystem" : true,
+					"path" : "/home/mustafa/Qt/6.10.2/gcc_64/include/QtQml"
+				},
+				{
+					"backtrace" : 7,
+					"isSystem" : true,
+					"path" : "/home/mustafa/Qt/6.10.2/gcc_64/include"
+				},
+				{
+					"backtrace" : 7,
+					"isSystem" : true,
+					"path" : "/home/mustafa/Qt/6.10.2/gcc_64/include/QtCore"
+				},
+				{
+					"backtrace" : 7,
+					"isSystem" : true,
+					"path" : "/home/mustafa/Qt/6.10.2/gcc_64/mkspecs/linux-g++"
+				},
+				{
+					"backtrace" : 7,
+					"isSystem" : true,
+					"path" : "/home/mustafa/Qt/6.10.2/gcc_64/include/QtQmlIntegration"
+				},
+				{
+					"backtrace" : 7,
+					"isSystem" : true,
+					"path" : "/home/mustafa/Qt/6.10.2/gcc_64/include/QtNetwork"
+				}
+			],
+			"language" : "CXX",
+			"sourceIndexes" : 
+			[
+				0,
+				1
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 6,
+			"id" : "QuickStudioLogicHelper::@79eb3f839f3a7e042382"
+		},
+		{
+			"backtrace" : 6,
+			"id" : "QuickStudioLogicHelper_resources_1::@79eb3f839f3a7e042382"
+		},
+		{
+			"backtrace" : 6,
+			"id" : "QuickStudioLogicHelper_resources_2::@79eb3f839f3a7e042382"
+		},
+		{
+			"id" : "QuickStudioLogicHelperplugin_autogen_timestamp_deps::@79eb3f839f3a7e042382"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "QuickStudioLogicHelperplugin_autogen::@79eb3f839f3a7e042382"
+		}
+	],
+	"id" : "QuickStudioLogicHelperplugin::@79eb3f839f3a7e042382",
+	"name" : "QuickStudioLogicHelperplugin",
+	"nameOnDisk" : "libQuickStudioLogicHelperplugin.a",
+	"paths" : 
+	{
+		"build" : "Dependencies/Components/imports/logichelper",
+		"source" : "Dependencies/Components/imports/logichelper"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files\\Generated",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2
+			]
+		},
+		{
+			"name" : "CMake Rules",
+			"sourceIndexes" : 
+			[
+				3
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 0,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "build/Dependencies/Components/imports/logichelper/QuickStudioLogicHelperplugin_autogen/mocs_compilation.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 10,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "build/Dependencies/Components/imports/logichelper/QuickStudioLogicHelperplugin_QtQuick_Studio_LogicHelperPlugin.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Dependencies/Components/imports/logichelper/QuickStudioLogicHelperplugin_autogen/timestamp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Dependencies/Components/imports/logichelper/QuickStudioLogicHelperplugin_autogen/timestamp.rule",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "STATIC_LIBRARY"
+}

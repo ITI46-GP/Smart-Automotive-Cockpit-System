@@ -1,0 +1,75 @@
+{
+	"backtrace" : 0,
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : 
+		[
+			"Digital_Cluster_DesignStudio/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			}
+		]
+	},
+	"dependencies" : 
+	[
+		{
+			"id" : "Digital_Cluster_DesignStudioplugin_autogen_timestamp_deps::@95b8685ba591f5e28c37"
+		}
+	],
+	"folder" : 
+	{
+		"name" : "QtInternalTargets"
+	},
+	"id" : "Digital_Cluster_DesignStudioplugin_autogen::@95b8685ba591f5e28c37",
+	"isGeneratorProvided" : true,
+	"name" : "Digital_Cluster_DesignStudioplugin_autogen",
+	"paths" : 
+	{
+		"build" : "Digital_Cluster_DesignStudio",
+		"source" : "Digital_Cluster_DesignStudio"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		},
+		{
+			"name" : "CMake Rules",
+			"sourceIndexes" : 
+			[
+				1,
+				2
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Digital_Cluster_DesignStudio/CMakeFiles/Digital_Cluster_DesignStudioplugin_autogen",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Digital_Cluster_DesignStudio/CMakeFiles/Digital_Cluster_DesignStudioplugin_autogen.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Digital_Cluster_DesignStudio/Digital_Cluster_DesignStudioplugin_autogen/timestamp.rule",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "UTILITY"
+}

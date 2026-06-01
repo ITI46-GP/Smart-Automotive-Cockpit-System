@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/qt-project.org/imports/QtQuick/Studio/DesignEffects">
+    <file alias="qmldir">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/qml/QtQuick/Studio/DesignEffects/qmldir</file>
+  </qresource>
+</RCC>
+

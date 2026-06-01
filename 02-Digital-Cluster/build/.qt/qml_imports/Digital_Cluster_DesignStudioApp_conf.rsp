@@ -1,0 +1,13 @@
+-rootPath
+/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster
+-cmake-output
+-output-file
+/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/.qt/qml_imports/Digital_Cluster_DesignStudioApp_conf.cmake
+-importPath
+/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build
+-importPath
+/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/qml
+-importPath
+/home/mustafa/Qt/6.10.2/gcc_64/qml
+-qrcFiles
+/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/.qt/rcc/configuration.qrc

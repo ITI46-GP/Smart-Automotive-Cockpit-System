@@ -1,0 +1,15 @@
+module Digital_Cluster_DesignStudioContent
+linktarget Digital_Cluster_DesignStudioContentplugin
+optional plugin Digital_Cluster_DesignStudioContentplugin
+classname Digital_Cluster_DesignStudioContentPlugin
+typeinfo Digital_Cluster_DesignStudioContent.qmltypes
+prefer :/qt/qml/Digital_Cluster_DesignStudioContent/
+App 1.0 App.qml
+BazelFrame 1.0 BazelFrame.qml
+Indicator 1.0 Indicator.qml
+RPMGauge 1.0 RPMGauge.qml
+Screen01 1.0 Screen01.qml
+SpeedGauge 1.0 SpeedGauge.qml
+SplashScreen 1.0 SplashScreen.qml
+TempSlider 1.0 TempSlider.qml
+

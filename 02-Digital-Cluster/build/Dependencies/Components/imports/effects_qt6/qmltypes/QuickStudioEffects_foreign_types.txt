@@ -1,0 +1,1 @@
+--foreign-types=/home/mustafa/Qt/6.10.2/gcc_64/./metatypes/qt6qml_metatypes.json,/home/mustafa/Qt/6.10.2/gcc_64/./metatypes/qt6core_metatypes.json,/home/mustafa/Qt/6.10.2/gcc_64/./metatypes/qt6network_metatypes.json

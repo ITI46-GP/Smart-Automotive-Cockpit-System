@@ -1,0 +1,15 @@
+{
+    "formatRevision": 1,
+    "modules": [
+        {
+            "moduleFiles": [
+                {
+                    "entries": [
+                    ],
+                    "filePath": "/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Dependencies/Components/imports/compat/Extras/StaticText.qml"
+                }
+            ],
+            "moduleId": "QtQuickUltralite.Extras(QuickUltraLiteStudioExtras)"
+        }
+    ]
+}

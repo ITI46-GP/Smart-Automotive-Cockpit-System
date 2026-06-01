@@ -1,0 +1,11 @@
+<RCC>
+  <qresource prefix="/qt-project.org/imports/QtQuickUltralite/Layers/">
+    <file alias="ApplicationScreens.qml">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Dependencies/Components/imports/compat/Layers/ApplicationScreens.qml</file>
+    <file alias="ImageLayer.qml">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Dependencies/Components/imports/compat/Layers/ImageLayer.qml</file>
+    <file alias="ItemLayer.qml">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Dependencies/Components/imports/compat/Layers/ItemLayer.qml</file>
+    <file alias="Screen.qml">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Dependencies/Components/imports/compat/Layers/Screen.qml</file>
+    <file alias="SpriteLayer.qml">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Dependencies/Components/imports/compat/Layers/SpriteLayer.qml</file>
+    <file alias="+DesignMode/Screen.qml">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Dependencies/Components/imports/compat/Layers/+DesignMode/Screen.qml</file>
+  </qresource>
+</RCC>
+

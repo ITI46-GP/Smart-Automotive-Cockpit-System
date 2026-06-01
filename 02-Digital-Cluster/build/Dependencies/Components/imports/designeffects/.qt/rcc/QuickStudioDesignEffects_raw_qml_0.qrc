@@ -1,0 +1,13 @@
+<RCC>
+  <qresource prefix="/qt-project.org/imports/QtQuick/Studio/DesignEffects/">
+    <file alias="DesignBackgroundBlurPrivate.qml">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Dependencies/Components/imports/designeffects/DesignBackgroundBlurPrivate.qml</file>
+    <file alias="DesignDropShadow.qml">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Dependencies/Components/imports/designeffects/DesignDropShadow.qml</file>
+    <file alias="DesignDropShadowPrivate.qml">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Dependencies/Components/imports/designeffects/DesignDropShadowPrivate.qml</file>
+    <file alias="DesignEffect.qml">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Dependencies/Components/imports/designeffects/DesignEffect.qml</file>
+    <file alias="DesignEffectPrivate.qml">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Dependencies/Components/imports/designeffects/DesignEffectPrivate.qml</file>
+    <file alias="DesignInnerShadow.qml">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Dependencies/Components/imports/designeffects/DesignInnerShadow.qml</file>
+    <file alias="DesignInnerShadowPrivate.qml">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Dependencies/Components/imports/designeffects/DesignInnerShadowPrivate.qml</file>
+    <file alias="DesignLayerBlurPrivate.qml">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Dependencies/Components/imports/designeffects/DesignLayerBlurPrivate.qml</file>
+  </qresource>
+</RCC>
+
