@@ -1,6 +1,7 @@
 # =========================
 # Build directories
 # =========================
+/build*
 build/
 */build/
 
@@ -27,6 +28,7 @@ build.ninja
 .qtc/
 .qtc_clangd/
 .qtcreator/
+.vscode/*
 *.user
 
 # =========================
@@ -50,3 +52,8 @@ Thumbs.db
 *.log
 *.tmp
 *.swp
+
+# Other local artifacts
+.qt/
+*.bak
+*.old
