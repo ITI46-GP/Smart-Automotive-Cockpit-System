@@ -1,6 +1,0 @@
-<RCC>
-  <qresource prefix="/qt-project.org/imports/FlowView/">
-    <file alias="qmldir">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Dependencies/Components/imports/flowview/qmldir</file>
-  </qresource>
-</RCC>
-

@@ -1,6 +1,0 @@
-<RCC>
-  <qresource prefix="/qt/qml/Digital_Cluster_DesignStudioContent/Content_Area">
-    <file alias="qmldir">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/qml/Digital_Cluster_DesignStudioContent/Content_Area/qmldir</file>
-  </qresource>
-</RCC>
-

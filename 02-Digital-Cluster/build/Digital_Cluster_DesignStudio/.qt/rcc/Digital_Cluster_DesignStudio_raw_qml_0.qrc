@@ -1,9 +1,0 @@
-<RCC>
-  <qresource prefix="/qt/qml/Digital_Cluster_DesignStudio/">
-    <file alias="Constants.qml">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Digital_Cluster_DesignStudio/Constants.qml</file>
-    <file alias="EventListModel.qml">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Digital_Cluster_DesignStudio/EventListModel.qml</file>
-    <file alias="EventListSimulator.qml">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Digital_Cluster_DesignStudio/EventListSimulator.qml</file>
-    <file alias="Theme.qml">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Digital_Cluster_DesignStudio/Theme.qml</file>
-  </qresource>
-</RCC>
-

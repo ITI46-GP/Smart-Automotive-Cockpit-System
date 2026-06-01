@@ -1,2 +1,0 @@
-/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/Dependencies/Components/imports/designeffects/.qsb/shaders/innerShadow.frag.qsb: \
-  /home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Dependencies/Components/imports/designeffects/shaders/innerShadow.frag

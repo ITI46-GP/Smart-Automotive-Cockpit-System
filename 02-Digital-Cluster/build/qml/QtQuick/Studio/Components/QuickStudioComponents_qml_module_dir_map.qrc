@@ -1,6 +1,0 @@
-<RCC>
-  <qresource prefix="/">
-    <file alias="/qt-project.org/imports/QtQuick/Studio/Components">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/qml/QtQuick/Studio/Components</file>
-
-  </qresource>
-</RCC>

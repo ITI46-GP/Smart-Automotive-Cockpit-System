@@ -1,7 +1,0 @@
-<RCC>
-  <qresource prefix="/qt-project.org/imports/QtQuick/Studio/EventSimulator/">
-    <file alias="EventSimulator.qml">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Dependencies/Components/imports/tools/eventsimulator/EventSimulator.qml</file>
-    <file alias="EventSimulatorDelegate.qml">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/Dependencies/Components/imports/tools/eventsimulator/EventSimulatorDelegate.qml</file>
-  </qresource>
-</RCC>
-

@@ -1,6 +1,0 @@
-<RCC>
-  <qresource prefix="/qt-project.org/imports/QtQuick/Studio/EventSimulator">
-    <file alias="qmldir">/home/mustafa/Graduation_Project/In-vehicle-Infotainment-IVI-System/02-Digital-Cluster/build/qml/QtQuick/Studio/EventSimulator/qmldir</file>
-  </qresource>
-</RCC>
-
