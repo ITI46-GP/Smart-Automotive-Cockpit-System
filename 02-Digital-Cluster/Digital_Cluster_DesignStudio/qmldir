@@ -1,0 +1,5 @@
+module Digital_Cluster_DesignStudio
+singleton Constants 1.0 Constants.qml
+EventListSimulator 1.0 EventListSimulator.qml
+EventListModel 1.0 EventListModel.qml
+singleton Theme 1.0 Theme.qml

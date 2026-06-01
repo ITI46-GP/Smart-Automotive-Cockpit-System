@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Load Qt EGLFS environment
+if [ -f /etc/default/qt-eglfs ]; then
+    . /etc/default/qt-eglfs
+fi
+
+export QT_QPA_PLATFORM=${QT_QPA_PLATFORM:-eglfs}
+
+echo "Starting IVI Qt EGLFS test app..."
+echo "QT_QPA_PLATFORM=$QT_QPA_PLATFORM"
+
+exec qml /opt/ivi-test/main.qml

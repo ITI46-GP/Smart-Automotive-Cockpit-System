@@ -1,15 +1,59 @@
+# =========================
+# Build directories
+# =========================
 /build*
-.vscode/*
-<<<<<<< HEAD
- 
-=======
 build/
-.qt/
+*/build/
+
+# =========================
+# CMake
+# =========================
 CMakeFiles/
 CMakeCache.txt
 cmake_install.cmake
-*.user
+build.ninja
+.ninja_deps
+.ninja_log
+
+# =========================
+# Qt Creator
+# =========================
+*.pro.user
+*.pro.user.*
+*.qbs.user
+*.qmake.stash
 *.autosave
+
+# Qt Creator project settings
+.qtc/
+.qtc_clangd/
+.qtcreator/
+.vscode/*
+*.user
+
+# =========================
+# Qt / QML generated
+# =========================
+*.qmlc
+*.jsc
+*.rcc
+*.qrc.depends
+*_autogen/
+
+# =========================
+# OS / Editor junk
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Logs / temp
+# =========================
+*.log
+*.tmp
+*.swp
+
+# Other local artifacts
+.qt/
 *.bak
 *.old
->>>>>>> origin/abdelfattah

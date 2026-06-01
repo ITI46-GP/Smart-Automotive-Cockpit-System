@@ -1,0 +1,18 @@
+module Digital_Cluster_DesignStudioContent.Content_Area
+BottomBar 1.0 BottomBar.qml
+BottomBarItem 1.0 BottomBarItem.qml
+Car 1.0 Car.qml
+CarView 1.0 CarView.qml
+Road 1.0 Road.qml
+ContactItem 1.0 ContactItem.qml
+ContactsView 1.0 ContactsView.qml
+FuelStatItem 1.0 FuelStatItem.qml
+FuelView 1.0 FuelView.qml
+MapView 1.0 MapView.qml
+SettingsView 1.0 SettingsView.qml
+SettingItem 1.0 SettingItem.qml
+TopBar 1.0 TopBar.qml
+TopBarButton 1.0 TopBarButton.qml
+MusicView 1.0 MusicView.qml
+
+

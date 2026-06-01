@@ -1,0 +1,7 @@
+module BottomLayer
+SegmentedGauge 1.0 SegmentedGauge.qml
+FuelIndicator 1.0 FuelIndicator.qml
+InfoBlock 1.0 InfoBlock.qml
+CenterInfo 1.0 CenterInfo.qml
+TempIndicator 1.0 TempIndicator.qml
+BottomLayer 1.0 BottomLayer.qml

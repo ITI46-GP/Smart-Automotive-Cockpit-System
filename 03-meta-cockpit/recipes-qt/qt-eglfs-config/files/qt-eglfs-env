@@ -1,0 +1,12 @@
+# Qt EGLFS environment for IVI application
+
+QT_QPA_PLATFORM=eglfs
+QT_QPA_EGLFS_INTEGRATION=eglfs_kms
+QT_QPA_EGLFS_HIDECURSOR=1
+
+# Touch/input handling
+QT_QPA_EVDEV_TOUCHSCREEN_PARAMETERS=/dev/input/event0
+QT_QPA_EVDEV_MOUSE_PARAMETERS=/dev/input/event0
+
+# Logging
+QT_LOGGING_RULES=qt.qpa.*=true
