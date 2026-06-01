@@ -1,0 +1,13 @@
+[Unit]
+Description=IVI GPS daemon for UART GPS module
+After=dev-serial0.device
+Wants=dev-serial0.device
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/gpsd -N -n /dev/serial0
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target
