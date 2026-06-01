@@ -1,0 +1,11 @@
+module Gauge
+GaugeActiveArc 1.0 GaugeActiveArc.qml
+GaugeTickMarks 1.0 GaugeTickMarks.qml
+GaugeLabels 1.0 GaugeLabels.qml
+GaugeInnerDisc 1.0 GaugeInnerDisc.qml
+GaugeSpeedNumber 1.0 GaugeSpeedNumber.qml
+GaugeSpeedLimitBadge 1.0 GaugeSpeedLimitBadge.qml
+GaugeNeedle 1.0 GaugeNeedle.qml
+GaugeRedlineZone 1.0 GaugeRedlineZone.qml
+GaugeModeBadge 1.0 GaugeModeBadge.qml
+GaugeGearBadge 1.0 GaugeGearBadge.qml
