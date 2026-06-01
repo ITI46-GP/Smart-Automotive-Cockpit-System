@@ -1,0 +1,3 @@
+# IVI input devices permissions for development/testing
+KERNEL=="event*", SUBSYSTEM=="input", MODE="0666"
+KERNEL=="mouse*", SUBSYSTEM=="input", MODE="0666"
