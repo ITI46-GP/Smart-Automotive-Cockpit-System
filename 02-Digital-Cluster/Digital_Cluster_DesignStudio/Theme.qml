@@ -32,6 +32,10 @@ QtObject {
     readonly property color colorAccentBright:       "#E60914"   // brighter red (highlights, glow)
     readonly property color colorAccentDeep:         "#6B0509"   // darker red (shadows, depth)
 
+    // readonly property color colorAccentPrimary:      "#1E90FF"   // main blue (Dodger Blue)
+    // readonly property color colorAccentBright:       "#66B2FF"   // brighter blue (highlights, soft glow)
+    // readonly property color colorAccentDeep:         "#003366"   // darker navy (shadows, deep contrast)
+
     // ── TEXT ────────────────────────────────────────────
     readonly property color colorTextPrimary:        "#CBC4CD"   // off-white (main text)
     readonly property color colorTextSecondary:      "#8A8392"   // medium-bright (labels)

@@ -23,7 +23,6 @@ Item {
 
     // Temperature
     property real motorTempC:  90
-    property real maxTempC:    120
     property url  tempIconSource: "../Digital_Cluster_DesignStudioContent/assets/engineTemp.png"
 
     // Center info
@@ -68,7 +67,6 @@ Item {
             Layout.preferredWidth: 220
             Layout.alignment: Qt.AlignVCenter
             motorTempC: bottomRoot.motorTempC
-            maxTempC:   bottomRoot.maxTempC
             iconSource: bottomRoot.tempIconSource
         }
     }

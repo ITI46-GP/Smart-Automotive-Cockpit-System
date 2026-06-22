@@ -5,11 +5,16 @@ Rectangle {
     width: 320
     height: 60
     radius: 12
-    color: "#15151f"
-    border.color: "#2a2a3a"
+    color: contactItem.isSelected ? "#2a2a3a" : "#15151f"
+    border.color: contactItem.isSelected ? "#ffffff" : "#2a2a3a"
+    border.width: contactItem.isSelected ? 2 : 1
 
     property string contactName: ""
     property string contactNumber: ""
+    property bool isSelected: false
+
+    Behavior on border.color { ColorAnimation { duration: 200 } }
+    Behavior on color { ColorAnimation { duration: 200 } }
 
     Row {
         anchors.fill: parent

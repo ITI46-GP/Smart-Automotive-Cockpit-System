@@ -67,6 +67,8 @@ Item {
             value:    fuelRoot.fuelPercent
             maxValue: 100
             segmentCount: 30
+            startThresholdPercent: 0.25
+            colorStart: Theme.colorDanger
         }
 
         // ── Labels: 0, 1/2, 1 ────────────────────────

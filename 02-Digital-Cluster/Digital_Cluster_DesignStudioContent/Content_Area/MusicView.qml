@@ -1,38 +1,22 @@
 import QtQuick
 import QtQuick.Controls
+import Backend 1.0
 
+/*
+ * MUSIC VIEW
+ * 
+ * This UI component renders the current media playback state.
+ * It is completely stateless; it binds entirely to the C++ `VehicleData.musicController`.
+ * 
+ * In a production environment:
+ * 1. The IVI sends SOME/IP messages with the current track metadata and playtime.
+ * 2. The C++ `MusicController` updates its `Q_PROPERTY` variables.
+ * 3. This QML file automatically reacts and updates the album art, text, and progress bar.
+ */
 Item {
     id: root
     width: 800
     height: 600
-
-    // ── music data model ──────────────────────────────
-    property var tracks: [
-        {
-            title: "Starboy",
-            artist: "The Weeknd",
-            cover: "../assets/starboy.jpeg",
-            duration: "3:20"
-        },
-        {
-            title: "Be Alright",
-            artist: "Dean Lewis",
-            cover: "../assets/be_alright.jpeg",
-            duration: "3:50"
-        },
-        {
-            title: "Shots",
-            artist: "Image Dragons",
-            cover: "../assets/Imagine_Dragons_-_Shots.png",
-            duration: "3:35"
-        }
-    ]
-
-    property int currentIndex: 1   // middle one is "now playing"
-
-    // current playing time (simulated)
-    property real currentTime: 76   // seconds (1:16)
-    property real totalTime: 230    // seconds (3:50)
 
     // ── helper to format seconds → m:ss ───────────────
     function formatTime(sec) {
@@ -40,24 +24,6 @@ Item {
         var s = Math.floor(sec % 60)
         return m + ":" + (s < 10 ? "0" + s : s)
     }
-
-    // simulate playback time progressing
-    Timer {
-        interval: 1000
-        running: true
-        repeat: true
-        onTriggered: {
-            if (root.currentTime < root.totalTime) {
-                root.currentTime += 1
-            } else {
-                root.currentTime = 0
-            }
-        }
-    }
-
-    // ── safe access helpers ───────────────────────────
-    property int prevIndex: (currentIndex - 1 + tracks.length) % tracks.length
-    property int nextIndex: (currentIndex + 1) % tracks.length
 
     // ══════════════════════════════════════════════════
     // ALBUM COVERS ROW
@@ -88,7 +54,7 @@ Item {
 
             Image {
                 anchors.fill: parent
-                source: root.tracks[root.prevIndex].cover
+                source: VehicleData.musicController.prevCoverArtUrl
                 fillMode: Image.PreserveAspectCrop
                 smooth: true
             }
@@ -117,7 +83,7 @@ Item {
 
             Image {
                 anchors.fill: parent
-                source: root.tracks[root.nextIndex].cover
+                source: VehicleData.musicController.nextCoverArtUrl
                 fillMode: Image.PreserveAspectCrop
                 smooth: true
             }
@@ -143,7 +109,7 @@ Item {
 
             Image {
                 anchors.fill: parent
-                source: root.tracks[root.currentIndex].cover
+                source: VehicleData.musicController.coverArtUrl
                 fillMode: Image.PreserveAspectCrop
                 smooth: true
             }
@@ -179,7 +145,7 @@ Item {
             id: currentTimeLabel
             anchors.left: parent.left
             anchors.verticalCenter: parent.verticalCenter
-            text: root.formatTime(root.currentTime)
+            text: root.formatTime(VehicleData.musicController.currentTimeSec)
             color: "#aaaaaa"
             font.pixelSize: 14
         }
@@ -200,7 +166,7 @@ Item {
                 anchors.left: parent.left
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
-                width: parent.width * (root.currentTime / root.totalTime)
+                width: parent.width * (VehicleData.musicController.totalTimeSec > 0 ? (VehicleData.musicController.currentTimeSec / VehicleData.musicController.totalTimeSec) : 0)
                 radius: 1
                 color: "#ffffff"
 
@@ -216,7 +182,7 @@ Item {
                 radius: 3
                 color: "#ffffff"
                 anchors.verticalCenter: parent.verticalCenter
-                x: parent.width * (root.currentTime / root.totalTime) - 3
+                x: parent.width * (VehicleData.musicController.totalTimeSec > 0 ? (VehicleData.musicController.currentTimeSec / VehicleData.musicController.totalTimeSec) : 0) - 3
 
                 Behavior on x {
                     NumberAnimation { duration: 500 }
@@ -229,7 +195,7 @@ Item {
             id: totalTimeLabel
             anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter
-            text: root.formatTime(root.totalTime)
+            text: root.formatTime(VehicleData.musicController.totalTimeSec)
             color: "#aaaaaa"
             font.pixelSize: 14
         }
@@ -246,7 +212,7 @@ Item {
 
         Text {
             anchors.horizontalCenter: parent.horizontalCenter
-            text: root.tracks[root.currentIndex].title
+            text: VehicleData.musicController.trackTitle
             color: "#ffffff"
             font.pixelSize: 16
             font.bold: true
@@ -254,7 +220,7 @@ Item {
 
         Text {
             anchors.horizontalCenter: parent.horizontalCenter
-            text: root.tracks[root.currentIndex].artist
+            text: VehicleData.musicController.trackArtist
             color: "#888899"
             font.pixelSize: 11
         }
