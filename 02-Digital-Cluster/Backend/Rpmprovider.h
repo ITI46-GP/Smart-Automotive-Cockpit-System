@@ -13,13 +13,12 @@ class RpmProvider : public QObject
     Q_PROPERTY(qreal rpmValue  READ rpmValue NOTIFY rpmValueChanged FINAL)
 
 public:
-    explicit RpmProvider(std::string path , QObject *parent = nullptr);
+    explicit RpmProvider(QObject *parent = nullptr);
     qreal rpmValue() const;
-    bool getValueFromFile();
+    void setRpmValue(qreal rpm);
 
 private:
     qreal rpmValue_ = 0;
-    std::string filePath_ = "";
 
 signals:
     void rpmValueChanged();

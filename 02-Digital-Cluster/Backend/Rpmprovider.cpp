@@ -1,8 +1,8 @@
 #include "Rpmprovider.h"
 #include <fstream>
 
-RpmProvider::RpmProvider(std::string path , QObject *parent)
-    : QObject{parent} , filePath_{path}
+RpmProvider::RpmProvider(QObject *parent)
+    : QObject{parent}
 {
 
 }
@@ -12,33 +12,17 @@ qreal RpmProvider::rpmValue() const
     return rpmValue_;
 }
 
-bool RpmProvider::getValueFromFile()
+void RpmProvider::setRpmValue(qreal rpm)
 {
-    std::ifstream inputFile(filePath_);
+    // The JSON provides raw RPM (e.g., 2100), but gauge expects 0 to 8.0
+    qreal normalizedRpm = rpm / 1000.0;
 
-    if(!inputFile)
-    {
-        return false;
+    if (normalizedRpm < MIN_RPM || normalizedRpm > MAX_RPM) {
+        return;
     }
 
-    qreal newValue;
-    if (inputFile >> newValue)
-    {
-        if (newValue < MIN_RPM || newValue > MAX_RPM)
-        {
-            return false;
-        }
-
-        if(newValue != rpmValue_)
-        {
-            rpmValue_ = newValue;
-
-            emit rpmValueChanged();
-        }
-        return true;
-    }
-    else
-    {
-        return false;
+    if (normalizedRpm != rpmValue_) {
+        rpmValue_ = normalizedRpm;
+        emit rpmValueChanged();
     }
 }

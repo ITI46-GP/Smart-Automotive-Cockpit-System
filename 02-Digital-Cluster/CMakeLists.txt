@@ -23,6 +23,7 @@ qt_add_executable(${CMAKE_PROJECT_NAME}
     App/main.cpp
     Backend/Speedprovider.h Backend/Speedprovider.cpp
     Backend/Rpmprovider.h Backend/Rpmprovider.cpp
+    Backend/GearProvider.h Backend/GearProvider.cpp
     Backend/vehicledataprovider.h Backend/vehicledataprovider.cpp
     Backend/BottomBar/FuelProvider.h Backend/BottomBar/FuelProvider.cpp
     Backend/BottomBar/EngineTempProvider.h Backend/BottomBar/EngineTempProvider.cpp

@@ -2,8 +2,8 @@
 #include <fstream>
 #include <iostream>
 
-SpeedProvider::SpeedProvider(std::string path , QObject *parent)
-    : QObject{parent} , filePath_{path}
+SpeedProvider::SpeedProvider(QObject *parent)
+    : QObject{parent}
 {
 }
 
@@ -13,32 +13,15 @@ uint32_t SpeedProvider::speedValue() const
 }
 
 
-bool SpeedProvider::getValueFromFile()
+void SpeedProvider::setSpeedValue(uint32_t speed)
 {
-    std::ifstream inputFile(filePath_);
-
-    if (!inputFile) {
-        return false;
+    // Check bounds
+    if (speed < MIN_SPEED || speed > MAX_SPEED) {
+        return;
     }
-    uint32_t newValue;
 
-    if (inputFile >> newValue) {
-
-        // Check First The value in the range
-        if (newValue < MIN_SPEED || newValue > MAX_SPEED)
-        {
-            return false;
-        }
-
-        // ONLY emit the signal if the speed actually changed!
-        if (newValue != speedValue_) {
-            speedValue_ = newValue;
-            emit speedValueChanged();
-        }
-        return true;
-
-    } else {
-        // The file was empty or contained invalid text (like "hello")
-        return false;
+    if (speed != speedValue_) {
+        speedValue_ = speed;
+        emit speedValueChanged();
     }
 }

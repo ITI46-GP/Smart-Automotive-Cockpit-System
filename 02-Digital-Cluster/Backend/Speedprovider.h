@@ -13,14 +13,12 @@ class SpeedProvider : public QObject
 
     Q_PROPERTY(uint32_t speedValue READ speedValue NOTIFY speedValueChanged FINAL)
 public:
-    explicit SpeedProvider(std::string path , QObject *parent = nullptr);
+    explicit SpeedProvider(QObject *parent = nullptr);
     uint32_t speedValue() const;
-    bool getValueFromFile();
+    void setSpeedValue(uint32_t speed);
+
 private:
-
     uint32_t speedValue_ = 0;
-    std::string filePath_ = "";
-
 
 signals:
     void speedValueChanged();

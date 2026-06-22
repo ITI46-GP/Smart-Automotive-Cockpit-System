@@ -2,6 +2,7 @@ import QtQuick
 import Gauge
 import Digital_Cluster_DesignStudio
 import QtQuick.Studio.DesignEffects
+import Backend 1.0
 
 /*
  * RPM GAUGE COMPOSER
@@ -24,7 +25,7 @@ Item {
     property real   maxRpm:      8
     property real   redline:     6       // redline starts here
     property string driveMode:   "NORMAL"
-    property string currentGear: "D"
+    property string currentGear: VehicleData.gearProvider.gearValue
     property bool   enableSmoothing: true
 
     property int needleAnimationDuration: 500

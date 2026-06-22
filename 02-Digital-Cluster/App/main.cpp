@@ -13,6 +13,7 @@
 #include "../Backend/ContentArea/ContactsModel.h"
 #include "../Backend/ContentArea/MusicController.h"
 #include "../Backend/SteeringWheelController.h"
+#include "../Backend/GearProvider.h"
 
 #include "autogen/environment.h"
 
@@ -22,7 +23,7 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
-    VehicleDataProvider *backend = new VehicleDataProvider("/tmp/ivi/speed.txt", "/tmp/ivi/rpm.txt", &app);
+    VehicleDataProvider *backend = new VehicleDataProvider("telemetry.json", &app);
     qmlRegisterSingletonInstance("Backend", 1, 0, "VehicleData", backend);
     qmlRegisterUncreatableType<SpeedProvider>("Backend", 1, 0, "SpeedProvider", "Cannot create SpeedProvider in QML");
     qmlRegisterUncreatableType<RpmProvider>("Backend", 1, 0, "RpmProvider", "Cannot create RpmProvider in QML");
@@ -35,6 +36,7 @@ int main(int argc, char *argv[])
     qmlRegisterUncreatableType<ContactsModel>("Backend", 1, 0, "ContactsModel", "Cannot create ContactsModel in QML");
     qmlRegisterUncreatableType<MusicController>("Backend", 1, 0, "MusicController", "Cannot create MusicController in QML");
     qmlRegisterUncreatableType<SteeringWheelController>("Backend", 1, 0, "SteeringWheelController", "Cannot create SteeringWheelController in QML");
+    qmlRegisterUncreatableType<GearProvider>("Backend", 1, 0, "GearProvider", "Cannot create GearProvider in QML");
     const QUrl url(mainQmlFile);
     QObject::connect(
                 &engine, &QQmlApplicationEngine::objectCreated, &app,

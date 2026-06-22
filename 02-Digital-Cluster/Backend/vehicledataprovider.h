@@ -8,9 +8,13 @@
 #include "ContentArea/ContactsModel.h"
 #include "ContentArea/MusicController.h"
 #include "SteeringWheelController.h"
+#include "GearProvider.h"
 
-#include <string>
+#include <QString>
 #include <QTimer>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QFile>
 
 class VehicleDataProvider : public QObject
 {
@@ -21,8 +25,9 @@ class VehicleDataProvider : public QObject
     Q_PROPERTY(ContactsModel* contactsModel READ contactsModel CONSTANT)
     Q_PROPERTY(MusicController* musicController READ musicController CONSTANT)
     Q_PROPERTY(SteeringWheelController* steeringWheel READ steeringWheel CONSTANT)
+    Q_PROPERTY(GearProvider* gearProvider READ gearProvider CONSTANT)
 public:
-    explicit VehicleDataProvider(std::string speedPath , std::string rpmPath, QObject *parent = nullptr);
+    explicit VehicleDataProvider(const QString &telemetryPath, QObject *parent = nullptr);
 
     // Getters to satisfy the Q_PROPERTY macros
     SpeedProvider* speedProvider() const;
@@ -31,18 +36,21 @@ public:
     ContactsModel* contactsModel() const;
     MusicController* musicController() const;
     SteeringWheelController* steeringWheel() const;
+    GearProvider* gearProvider() const;
 
 private:
     SpeedProvider* speedProvider_;
     RpmProvider* rpmProvider_;
+    GearProvider* gearProvider_;
     BottomBarDataProvider* bottomBar_;
     ContactsModel* contactsModel_;
     MusicController* musicController_;
     SteeringWheelController* steeringWheel_;
 
     QTimer* timer_;
+    QString telemetryPath_;
 
-private slots:
+public slots:
     void updateData();
 
 };
