@@ -20,23 +20,45 @@ VehicleDataProvider::VehicleDataProvider(const QString &telemetryPath, QObject *
     timer_->start(50);
 }
 
+QString VehicleDataProvider::resolveTelemetryPath()
+{
+    // Overridable at launch, so a path change never needs a rebuild again:
+    //     HNC_TELEMETRY_PATH=/tmp/telemetry.json ./QnxClusterApp
+    const QString override = qEnvironmentVariable("HNC_TELEMETRY_PATH");
+    if (!override.isEmpty())
+        return override;
+
+    // ---------------------------------------------------------------------
+    // Default = the intended end state: the SOME/IP client is launched with an
+    // explicit output path of /tmp/telemetry.json and writes it atomically.
+    // /tmp is consistent with everything else the cluster reads on this board
+    // (/tmp/ivi/*.txt) and is proven writable; /home/qnxuser is not (touch
+    // fails with ENOENT even though ls on the directory succeeds).
+    //
+    // INTERIM: until the updated client is installed in /opt, the shipped one
+    // ignores both argv[1] and $CARLA_CLIENT_OUTPUT -- verified on the guest
+    // 2026-08-13, its binary contains neither string -- and always writes its
+    // built-in "received_firmware.bin" relative to cwd (/var, per
+    // /opt/someip/run_client.sh). Until that is replaced, launch the cluster
+    // with:
+    //
+    //     HNC_TELEMETRY_PATH=/var/received_firmware.bin ./QnxClusterApp
+    //
+    // The override exists precisely so this never needs another rebuild: the
+    // path has already been wrong twice, and neither symlink nor hard link is
+    // available as an escape hatch on this filesystem (both fail with
+    // "Function not implemented").
+    // ---------------------------------------------------------------------
+    return QStringLiteral("/tmp/telemetry.json");
+}
+
 VehicleDataProvider *VehicleDataProvider::create(QQmlEngine *qmlEngine, QJSEngine *jsEngine)
 {
     Q_UNUSED(qmlEngine)
     Q_UNUSED(jsEngine)
-    // 2026-08-13: was a bare relative "telemetry.json", matching the
-    // reference. On this board that resolves against the app's cwd, which
-    // over this project's ssh launch harness is /home/qnxuser -- confirmed
-    // NOT writable (`touch` there fails with ENOENT despite `ls` succeeding
-    // on the directory itself; likely a read-only-mounted base image path).
-    // /tmp is the only location proven writable all session (it's where
-    // every TrialCluster* binary, log, and the /tmp/ivi/*.txt bottom-bar
-    // files already live) -- made absolute and consistent with those
-    // instead of leaving telemetry.json as the one file nothing could ever
-    // actually write to.
     // No QObject parent: the QML engine takes ownership of a QML_SINGLETON
     // instance created this way.
-    return new VehicleDataProvider(QStringLiteral("/tmp/telemetry.json"));
+    return new VehicleDataProvider(resolveTelemetryPath());
 }
 
 void VehicleDataProvider::updateData()

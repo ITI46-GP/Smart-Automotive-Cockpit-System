@@ -8,47 +8,107 @@ Verified against the running guest on 2026-08-13, not inferred from docs.
 
 ---
 
-## TL;DR — one file changes
+## TL;DR — the clean `/opt` update
 
-Replace **`/opt/someip/run_client.sh`** in the image with [`run_client.sh`](run_client.sh) from this
-directory. That is the whole required change.
+Four changes in the image and the whole thing resolves:
 
-Nothing else in `/opt/someip` needs touching: the binary, `vsomeip.json`, and `libs/` are all fine.
+| # | Change | Fixes |
+|---|---|---|
+| 1 | `/opt/someip/bin/SomeIPBlClient` — **rebuild** | no output-path support, no atomic write, extra round trip |
+| 2 | `/opt/someip/run_client.sh` — **replace** | passes the telemetry path explicitly |
+| 3 | `/opt/cluster/bin/QnxClusterApp` — **install** | currently only in `/tmp`, lost on reboot |
+| 4 | Start the client **as root** at boot | `/var/vsomeip.lck` is root-owned; as `qnxuser` the client crashes on startup |
+
+Afterwards the data path is simply: client writes `/tmp/telemetry.json` → cluster reads
+`/tmp/telemetry.json`. No `/var`, no `received_firmware.bin`, no env-var override needed.
+
+**Unchanged:** `/opt/someip/config/vsomeip.json` (already correct — `unicast: 192.168.1.51`) and
+`/opt/someip/libs/` (correct versions: vsomeip 3.5.5, CommonAPI 3.2.4).
+
+> **Interim, before that image lands:** the shipped client ignores the path argument, so launch the
+> cluster with `HNC_TELEMETRY_PATH=/var/received_firmware.bin ./QnxClusterApp` — and start the
+> client as root, or it will not start at all.
+
+### ★ Item 1 needs AbdelFattah's build environment
+
+The client **cannot** be rebuilt from the cross-sysroot on Mostafa's laptop. The guest image links
+**`libc++.so.2`** (LLVM) and has no libstdc++ at all; that sysroot was built against **libstdc++**
+(and Boost 1.84 vs the guest's 1.74). A binary built from it dies immediately on target with
+`ldd:FATAL: Could not load library libstdc++.so.6` — confirmed by running it on the board.
+
+The deployed binary's RPATH names the machine that can do it:
+
+```
+/home/abdo/build-qnx/lib:/home/abdo/build-qnx/install/lib:
+/home/abdo/build-qnx/commonapi/lib:/home/abdo/build-qnx/vsomeip/lib:
+/home/abdo/Workspace/vsomeip-for-qnx/qnx_final_package/libs
+```
+
+So either AbdelFattah rebuilds `SomeIPBlClient` from the updated `someip/src/client.cpp`, or he
+shares that libc++ QNX sysroot so anyone can. **The updated `client.cpp` lives in the
+`Carla-someip-telemetry` repo and must reach him** — it is not in this repo.
+
+### ★ Item 4 is the one nobody had hit yet
+
+Running the client as `qnxuser` fails before it does anything:
+
+```
+[error] is_routing_manager: Could not open /var/vsomeip.lck: Permission denied
+[error] configured as routing but other routing manager present
+[CAPI][ERROR] Failed to build proxy!
+terminate called after throwing an instance of 'std::__2::system_error'
+```
+
+`/var/vsomeip.lck` is mode `0200`, root-owned, left by a boot-time run. `VSOMEIP_BASE_PATH` does
+not help — `/var/` is compiled into `libvsomeip3.so.3`. `clusterStreaming` does **not** use vsomeip,
+so those files are stale leftovers rather than something in use. Either start the client as root
+(recommended — that is evidently the original intent) or make sure the image does not leave a
+root-owned lock behind when the client runs as `qnxuser`.
 
 ---
 
-## The bug
+## The bug, and why the obvious fix does not work
 
-The image currently ships this:
+The image ships this launcher:
 
 ```sh
-#!/bin/ksh
-export LD_LIBRARY_PATH=/opt/someip/libs:$LD_LIBRARY_PATH
-export VSOMEIP_CONFIGURATION=/opt/someip/config/vsomeip.json
-export VSOMEIP_APPLICATION_NAME=abdelfattah.examples.SomeIPBl
 cd /var
-exec /opt/someip/bin/SomeIPBlClient          # <-- no output path
+exec /opt/someip/bin/SomeIPBlClient          # <-- no output path argument
 ```
 
-`SomeIPBlClient` resolves its output path as:
+while the cluster used to read `/tmp/telemetry.json`. Two different files; they never met.
 
-```
-argv[1]  →  $CARLA_CLIENT_OUTPUT  →  "received_firmware.bin"   (built-in fallback, relative to cwd)
-```
+**Neither side reports an error.** The client logs a verified checksum for every transfer, and the
+cluster's read is a plain `if (file.open(...))` that keeps the last value when the file is missing.
+Healthy logs on both sides, frozen gauges, nothing pointing at the cause.
 
-With no argument and no env var it takes the fallback, and `cd /var` puts it at
-**`/var/received_firmware.bin`**.
+The obvious fix — pass the path in `run_client.sh` — **does not work on this image.** Verified on
+the guest: the deployed `/opt/someip/bin/SomeIPBlClient` predates output-path support entirely.
+Its strings contain neither `CARLA_CLIENT_OUTPUT` nor the `Saving received files to` message, so it
+ignores both `argv[1]` and the env var and always writes its built-in `received_firmware.bin`
+relative to cwd:
 
-The cluster reads a hardcoded absolute path, **`/tmp/telemetry.json`**
-(`Qnx-Cluster/src/Backend/VehicleDataProvider.cpp`). So the two halves write and read different
-files and never meet.
+| marker in the deployed binary | |
+|---|---|
+| `received_firmware.bin` | present |
+| `CARLA_CLIENT_OUTPUT` | **absent** |
+| `Saving received files to` | **absent** |
 
-**Why this was hard to spot:** neither side reports an error. The client logs a verified checksum
-for every transfer, and the cluster's read is a plain `if (file.open(...))` that just keeps the last
-value when the file is missing. You get healthy logs on both sides and frozen gauges, with nothing
-anywhere pointing at the cause.
+Three other routes were tested on the target and rejected:
 
-The replacement passes the path explicitly and keeps it overridable via `$CLUSTER_TELEMETRY`.
+1. **Rebuild the client** — the guest image links **`libc++.so.2`** (LLVM) and has no libstdc++ at
+   all, while the cross-sysroot available to us was built against **libstdc++** (and Boost 1.84 vs
+   the guest's 1.74). A binary built from it dies immediately with
+   `ldd:FATAL: Could not load library libstdc++.so.6`. Confirmed by running it on the board.
+2. **Symlink** `/tmp/telemetry.json` → the client's output — `ln -s` fails with
+   *"Function not implemented"*; this filesystem has no symlinks.
+3. **Hard link** — same, `ln` fails with *"Function not implemented"*.
+
+So the cluster reads where the client already writes. That is the one piece we can rebuild.
+
+`run_client.sh` in this directory is kept for the day the client **is** rebuilt against a matching
+libc++ sysroot: it passes the path explicitly and honours `$CLUSTER_TELEMETRY`. It is a no-op
+against the currently shipped binary.
 
 ---
 

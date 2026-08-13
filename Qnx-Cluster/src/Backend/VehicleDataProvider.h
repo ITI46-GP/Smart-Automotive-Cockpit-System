@@ -58,6 +58,10 @@ public:
     // main.cpp (`new VehicleDataProvider("telemetry.json", &app)`).
     static VehicleDataProvider *create(QQmlEngine *qmlEngine, QJSEngine *jsEngine);
 
+    // Telemetry file the cluster polls. $HNC_TELEMETRY_PATH overrides the
+    // default at launch, so changing it never requires a rebuild.
+    static QString resolveTelemetryPath();
+
 private:
     SpeedProvider* speedProvider_;
     RpmProvider* rpmProvider_;
