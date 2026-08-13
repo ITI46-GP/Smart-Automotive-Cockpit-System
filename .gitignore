@@ -50,3 +50,6 @@ Thumbs.db
 *.log
 *.tmp
 *.swp
+*/build-qnx/
+build-qnx/
+Qnx-Cluster/.git.standalone-backup/

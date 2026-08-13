@@ -1,0 +1,11 @@
+build/
+build-qnx/
+*.user
+.qtcreator/
+.qtc/
+.qtc_clangd/
+__pycache__/
+*.pyc
+build/
+build-qnx/
+build-desktop/
