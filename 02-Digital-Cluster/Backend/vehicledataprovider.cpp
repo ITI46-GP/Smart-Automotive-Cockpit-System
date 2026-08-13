@@ -14,8 +14,8 @@ VehicleDataProvider::VehicleDataProvider(const QString &telemetryPath, QObject *
     timer_ = new QTimer(this);
     // Connect TimerCallBack
     connect(timer_, &QTimer::timeout, this,&VehicleDataProvider::updateData);
-    // Start Timer with 50 ms
-    timer_ -> start(50);
+    // Poll the telemetry file at ~60 Hz so the gauges move smoothly.
+    timer_ -> start(16);
 }
 
 void VehicleDataProvider::updateData()

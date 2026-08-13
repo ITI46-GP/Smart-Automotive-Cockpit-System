@@ -2,6 +2,7 @@
 #define UDPSENDER_H
 
 #include <QObject>
+#include <QHostAddress>
 #include <QUdpSocket>
 
 class UdpSender : public QObject
@@ -14,6 +15,8 @@ public:
 
 private:
     QUdpSocket *m_socket;
+    QHostAddress m_host;
+    quint16 m_port;
 };
 
 #endif // UDPSENDER_H
