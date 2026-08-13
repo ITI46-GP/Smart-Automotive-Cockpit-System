@@ -29,27 +29,24 @@ QString VehicleDataProvider::resolveTelemetryPath()
         return override;
 
     // ---------------------------------------------------------------------
-    // Default = the intended end state: the SOME/IP client is launched with an
-    // explicit output path of /tmp/telemetry.json and writes it atomically.
-    // /tmp is consistent with everything else the cluster reads on this board
-    // (/tmp/ivi/*.txt) and is proven writable; /home/qnxuser is not (touch
-    // fails with ENOENT even though ls on the directory succeeds).
+    // Default = exactly where the SOME/IP client ALREADY on the guest writes.
+    // Nothing in /opt is touched; the cluster is the only piece that changes.
     //
-    // INTERIM: until the updated client is installed in /opt, the shipped one
-    // ignores both argv[1] and $CARLA_CLIENT_OUTPUT -- verified on the guest
-    // 2026-08-13, its binary contains neither string -- and always writes its
-    // built-in "received_firmware.bin" relative to cwd (/var, per
-    // /opt/someip/run_client.sh). Until that is replaced, launch the cluster
-    // with:
+    // Verified on the guest 2026-08-13: /opt/someip/bin/SomeIPBlClient predates
+    // output-path support -- its binary contains neither "CARLA_CLIENT_OUTPUT"
+    // nor the argv[1] handling -- so it ignores both and always writes its
+    // built-in "received_firmware.bin" relative to cwd.
+    // /opt/someip/run_client.sh does `cd /var`, so the file lands here.
     //
-    //     HNC_TELEMETRY_PATH=/var/received_firmware.bin ./QnxClusterApp
+    // Joining the two paths any other way is not possible on this board: the
+    // filesystem implements neither symlink nor hard link (both fail with
+    // "Function not implemented", tested on target).
     //
-    // The override exists precisely so this never needs another rebuild: the
-    // path has already been wrong twice, and neither symlink nor hard link is
-    // available as an escape hatch on this filesystem (both fail with
-    // "Function not implemented").
+    // If the client is ever rebuilt with output-path support, no cluster
+    // rebuild is needed -- just launch with:
+    //     HNC_TELEMETRY_PATH=/tmp/telemetry.json ./QnxClusterApp
     // ---------------------------------------------------------------------
-    return QStringLiteral("/tmp/telemetry.json");
+    return QStringLiteral("/var/received_firmware.bin");
 }
 
 VehicleDataProvider *VehicleDataProvider::create(QQmlEngine *qmlEngine, QJSEngine *jsEngine)
