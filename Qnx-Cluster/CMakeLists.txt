@@ -13,12 +13,22 @@ if(NOT CMAKE_BUILD_TYPE)
 endif()
 
 find_package(Qt6 6.8 REQUIRED COMPONENTS Core Gui Qml Quick Network)
+find_package(Threads REQUIRED)
 
 qt_standard_project_setup(REQUIRES 6.8)
 
 qt_add_executable(QnxClusterApp
     src/main.cpp
     resources.qrc
+
+    src/NavigationBackend/HnclProtocol.hpp
+    src/NavigationBackend/HnclProtocol.cpp
+    src/NavigationBackend/HnclNavigationServer.hpp
+    src/NavigationBackend/HnclNavigationServer.cpp
+    src/NavigationBackend/ClusterPresentationState.hpp
+    src/NavigationBackend/ClusterPresentationState.cpp
+    src/NavigationBackend/ClusterNavigationModel.hpp
+    src/NavigationBackend/ClusterNavigationModel.cpp
 )
 
 qt_add_qml_module(QnxClusterApp
@@ -85,19 +95,11 @@ qt_add_qml_module(QnxClusterApp
     src/Backend/ContentArea/MusicController.cpp
 )
 
-# The generated qmltyperegistrations.cpp does `#include <Theme.h>` (bare
-# filename via angle brackets, resolved through the compiler's include
-# search path — not a relative path). qt_add_qml_module's SOURCES entries
-# don't automatically add their own directory to the target's include
-# path the way normal sources under CMAKE_INCLUDE_CURRENT_DIR do, so
-# without this, that #include silently fails to find src/Theme.h and
-# every type it declares (Theme) is "not declared in this scope" in that
-# one generated file, even though Theme.h itself compiles fine everywhere
-# else and moc/qmltyperegistrar both correctly found and processed it.
-# Same trap applies to VehicleDataProvider.h (the other QML_SINGLETON,
-# see its header comment) — it lives one directory deeper, so `src` alone
-# doesn't cover it; `src/Backend` is added for the same reason.
-target_include_directories(QnxClusterApp PRIVATE src src/Backend)
+target_include_directories(QnxClusterApp PRIVATE
+    src
+    src/Backend
+    src/NavigationBackend
+)
 
 target_link_libraries(QnxClusterApp PRIVATE
     Qt6::Core
@@ -105,9 +107,11 @@ target_link_libraries(QnxClusterApp PRIVATE
     Qt6::Qml
     Qt6::Quick
     Qt6::Network
+    Threads::Threads
 )
 
 include(GNUInstallDirs)
+
 install(TARGETS QnxClusterApp
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
