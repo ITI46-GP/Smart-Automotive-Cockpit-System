@@ -23,7 +23,23 @@ Rectangle {
     property real simRpm: 0
     property real simFuel: 100
     property bool accelerating: true
-    property int currentView: 0
+
+    /*
+     * The visible center view is now owned by the cluster backend.
+     *
+     * Normal:
+     *   selectedView 0 -> Car
+     *
+     * Manual icon:
+     *   clusterNavigation.selectView(index)
+     *
+     * Active route:
+     *   effectiveView is forced to Navigation (1)
+     *
+     * Route end:
+     *   effectiveView returns to the user's selected view.
+     */
+    readonly property int currentView: clusterNavigation.effectiveView
 
     property string simMode: {
         if (simRpm < 2) return "ECO"
@@ -90,6 +106,7 @@ Rectangle {
                     NumberAnimation { target: digitalCluster; property: "simSpeed"; from: 0; to: 240; duration: 1000; easing.type: Easing.InOutSine }
                     NumberAnimation { target: digitalCluster; property: "simSpeed"; from: 240; to: 0; duration: 1000; easing.type: Easing.InOutSine }
                 }
+
                 // RPM Sweep (0 -> 8 -> 0)
                 SequentialAnimation {
                     NumberAnimation { target: digitalCluster; property: "simRpm"; from: 0; to: 8; duration: 1000; easing.type: Easing.InOutSine }
@@ -148,8 +165,6 @@ Rectangle {
             id: contentArea
             x: 420
             y: 13
-            // scale: 0.75
-            // opacity: 1
 
             scale: 0
             opacity: 0
@@ -201,27 +216,24 @@ Rectangle {
             }
         }
 
-        SpeedGauge{
+        SpeedGauge {
             id: speedGauge
-            // x: 92
-            // scale: 0.7
             y: 0
+
             // for startupAnimation
-            x:432
+            x: 432
             scale: 0.1
             opacity: 0
         }
 
         RPMGauge {
             id: rightGauge
-            // x: 772
-            // scale: 0.7
             y: 0
             rpmValue: digitalCluster.simRpm.toFixed(1)
             driveMode: digitalCluster.simMode
 
             // for startupAnimation
-            x:432
+            x: 432
             scale: 0.1
             opacity: 0
         }
@@ -233,9 +245,21 @@ Rectangle {
         anchors.top: parent.top
         anchors.topMargin: 90
         anchors.horizontalCenterOffset: 0
+
+        /*
+         * Highlight the view that is actually visible.
+         *
+         * During active navigation this stays Navigation even if another
+         * selection is remembered in the backend.
+         */
         currentView: digitalCluster.currentView
+
+        /*
+         * Manual icon selection now goes through the same backend state
+         * machine used by Android navigation and future NOVA commands.
+         */
         onViewSelected: function(index) {
-            digitalCluster.currentView = index
+            clusterNavigation.selectView(index)
         }
 
         // for startupAnimation
@@ -253,7 +277,6 @@ Rectangle {
         anchors.leftMargin: 0
         anchors.rightMargin: 0
         anchors.bottomMargin: 60
-        // scale: 1
 
         // for startupAnimation
         scale: 0
@@ -277,7 +300,6 @@ Rectangle {
         z: 999
 
         onStartupComplete: {
-            // Because there is no Component/Loader in the way, this will absolutely fire now.
             startupSequence.start()
         }
     }
@@ -291,9 +313,7 @@ Rectangle {
         Image {
             id: laneKeepingAssist
             Layout.preferredHeight: 36
-
             Layout.preferredWidth: 36
-
             Layout.alignment: Qt.AlignVCenter
             source: "assets/features_Icons/lane-keeping-assist.png"
             fillMode: Image.PreserveAspectFit
@@ -302,15 +322,10 @@ Rectangle {
         Image {
             id: tractionControl
             Layout.preferredHeight: 36
-
             Layout.preferredWidth: 36
-
             Layout.alignment: Qt.AlignVCenter
             source: "assets/features_Icons/traction-control.png"
             fillMode: Image.PreserveAspectFit
         }
-
     }
 }
-
-
