@@ -104,7 +104,7 @@ Window {
     // Which content-area view is showing: 0 Car/Road, 1 Map, 2 Contacts,
     // 3 Music, 4 Fuel, 5 Settings. Matches the reference's Screen01.qml
     // numbering exactly, driven by TopBar's viewSelected (see below).
-    property int currentView: 0
+    readonly property int currentView: clusterNavigation.effectiveView
 
     // ════════════════════════════════════════════════════════════
     //  S5 TOGGLE — two stages from one build
@@ -704,7 +704,7 @@ Window {
             anchors.top: parent.top
             anchors.topMargin: 90
             currentView: root.currentView
-            onViewSelected: function(index) { root.currentView = index }
+            onViewSelected: function(index) { clusterNavigation.selectView(index) }
             useMipmap: root.iconMipmap
             showPillShadow: root.showShadowPill
             showLeftGlow: root.showShadowLeftGlow

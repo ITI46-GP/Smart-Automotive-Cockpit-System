@@ -29,6 +29,13 @@ qt_add_executable(QnxClusterApp
     src/NavigationBackend/ClusterPresentationState.cpp
     src/NavigationBackend/ClusterNavigationModel.hpp
     src/NavigationBackend/ClusterNavigationModel.cpp
+
+    src/MapFrameBackend/MapFrameImageProvider.hpp
+    src/MapFrameBackend/MapFrameImageProvider.cpp
+    src/MapFrameBackend/MapFrameModel.hpp
+    src/MapFrameBackend/MapFrameModel.cpp
+    src/MapFrameBackend/MapFrameServer.hpp
+    src/MapFrameBackend/MapFrameServer.cpp
 )
 
 qt_add_qml_module(QnxClusterApp
@@ -99,6 +106,7 @@ target_include_directories(QnxClusterApp PRIVATE
     src
     src/Backend
     src/NavigationBackend
+    src/MapFrameBackend
 )
 
 target_link_libraries(QnxClusterApp PRIVATE

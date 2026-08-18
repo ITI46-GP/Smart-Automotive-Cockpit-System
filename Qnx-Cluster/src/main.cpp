@@ -9,6 +9,13 @@
 #include <QQuickWindow>
 #include <QStringList>
 
+#include <QMetaObject>
+#include <cstdint>
+#include <utility>
+
+#include "MapFrameBackend/MapFrameImageProvider.hpp"
+#include "MapFrameBackend/MapFrameModel.hpp"
+#include "MapFrameBackend/MapFrameServer.hpp"
 #include "NavigationBackend/ClusterNavigationModel.hpp"
 #include "NavigationBackend/HnclNavigationServer.hpp"
 
@@ -34,6 +41,10 @@ int main(int argc, char *argv[])
      * This is completely independent from HNVG / TCP 6100.
      */
     hypernova::cluster::ClusterNavigationModel navigationModel;
+    auto* mapFrameImageProvider =
+            new hypernova::cluster::MapFrameImageProvider;
+    hypernova::cluster::MapFrameModel mapFrameModel(
+            mapFrameImageProvider);
 
     hypernova::cluster::HnclNavigationServer navigationServer(
             6200,
@@ -64,11 +75,34 @@ int main(int argc, char *argv[])
                                     state.destination);
                 },
 
-                [&navigationModel]() {
+                [&navigationModel, &mapFrameModel]() {
                     navigationModel.postNavigationClear();
+                    QMetaObject::invokeMethod(
+                            &mapFrameModel,
+                            [&mapFrameModel] { mapFrameModel.clear(); },
+                            Qt::QueuedConnection);
 
                     qInfo()
                             << "HNCL NAVIGATION_CLEAR";
+                }
+            });
+
+    /* Independent Android MapLibre JPEG mirror; HNMF / TCP 6201 only. */
+    hypernova::cluster::MapFrameServer mapFrameServer(
+            6201,
+            {
+                [&mapFrameModel](
+                        QImage image,
+                        std::uint32_t sequence,
+                        std::uint64_t captureTimestampMs) {
+                    mapFrameModel.postFrame(
+                            std::move(image),
+                            sequence,
+                            captureTimestampMs);
+                },
+                [](bool connected) {
+                    qInfo() << "HNMF Android map-frame connection:"
+                            << (connected ? "READY" : "DISCONNECTED");
                 }
             });
 
@@ -81,7 +115,18 @@ int main(int argc, char *argv[])
                 << navigationServer.boundPort();
     }
 
+    if (!mapFrameServer.start()) {
+        qWarning() << "HNMF: failed to listen on TCP 6201";
+    } else {
+        qInfo() << "HNMF: Digital Cluster frame server listening on TCP"
+                << mapFrameServer.boundPort();
+    }
+
     QQmlApplicationEngine engine;
+
+    engine.addImageProvider(
+            QStringLiteral("hnmf"),
+            mapFrameImageProvider);
 
     /*
      * Prepared for the next integration step.
@@ -97,6 +142,9 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty(
             QStringLiteral("clusterNavigation"),
             &navigationModel);
+    engine.rootContext()->setContextProperty(
+            QStringLiteral("mapFrames"),
+            &mapFrameModel);
 
     QObject::connect(
             &engine,
@@ -114,6 +162,7 @@ int main(int argc, char *argv[])
     const int result =
             app.exec();
 
+    mapFrameServer.stop();
     navigationServer.stop();
 
     return result;
