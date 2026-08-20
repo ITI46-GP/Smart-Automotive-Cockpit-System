@@ -15,6 +15,8 @@ VehicleDataProvider::VehicleDataProvider(const QString &telemetryPath, QObject *
     contactsModel_ = new ContactsModel(this);
     musicController_ = new MusicController(this);
     steeringWheel_ = new SteeringWheelController(this);
+    connect(steeringWheel_, &SteeringWheelController::bindFailed,
+            this, &VehicleDataProvider::errorOccurred);
     timer_ = new QTimer(this);
     connect(timer_, &QTimer::timeout, this, &VehicleDataProvider::updateData);
     timer_->start(50);
@@ -91,3 +93,8 @@ BottomBarDataProvider* VehicleDataProvider::bottomBar() const { return bottomBar
 ContactsModel* VehicleDataProvider::contactsModel() const { return contactsModel_; }
 MusicController* VehicleDataProvider::musicController() const { return musicController_; }
 SteeringWheelController* VehicleDataProvider::steeringWheel() const { return steeringWheel_; }
+
+void VehicleDataProvider::raiseError(const QString &message)
+{
+    emit errorOccurred(message);
+}

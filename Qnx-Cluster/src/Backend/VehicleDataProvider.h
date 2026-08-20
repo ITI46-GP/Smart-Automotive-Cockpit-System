@@ -62,6 +62,14 @@ public:
     // default at launch, so changing it never requires a rebuild.
     static QString resolveTelemetryPath();
 
+    // Generic error surface for QML's ErrorDialog. Callable directly for
+    // manual testing; real sources (e.g. SteeringWheelController::bindFailed)
+    // are wired to errorOccurred in the constructor instead of calling this.
+    Q_INVOKABLE void raiseError(const QString &message);
+
+signals:
+    void errorOccurred(const QString &message);
+
 private:
     SpeedProvider* speedProvider_;
     RpmProvider* rpmProvider_;

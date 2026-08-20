@@ -49,6 +49,7 @@ qt_add_qml_module(QnxClusterApp
     qml/ContentArea/Car.qml
     qml/ContentArea/Road.qml
     qml/ContentArea/SplashScreen.qml
+    qml/ContentArea/ErrorDialog.qml
     qml/Gauge/GaugeActiveArc.qml
     qml/Gauge/GaugeSpeedNumber.qml
     qml/Gauge/GaugeLabels.qml

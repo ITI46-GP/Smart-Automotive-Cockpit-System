@@ -101,6 +101,62 @@ Window {
     // Hardcoded in the reference too (SpeedGauge.qml's own default).
     property int speedLimitKph: 90
 
+    // Wheel D-pad -> content view switching, per Cluster-Handoff-Mahgoub.md:
+    // left/right cycle the 6 views (Car/Map/Contacts/Music/Fuel/Settings),
+    // ok confirms. Up/down stay ContactsView-only (list scroll), unchanged.
+    // NOTE: left/right briefly drove the turn-signal flashers in an earlier
+    // revision; moved to L3/R3 (below) once the handoff claimed left/right
+    // for view switching instead -- see that Connections block for why.
+    Connections {
+        target: VehicleData.steeringWheel
+        function onLeftPressed() {
+            clusterNavigation.selectView((root.currentView - 1 + 6) % 6)
+        }
+        function onRightPressed() {
+            clusterNavigation.selectView((root.currentView + 1) % 6)
+        }
+        function onOkPressed() {
+            // Design intentionally left open by the handoff ("pick what fits
+            // the UI") -- no per-view confirm action exists in the backend
+            // yet (e.g. ContactsModel has no "call" invokable), so this is a
+            // visible, testable stub rather than invented behaviour.
+            console.log("[SteeringWheel] OK pressed on view", root.currentView)
+        }
+    }
+
+    // Turn signal flashers -- L3/R3 (paddle shifters), deliberately NOT
+    // left/right, since the D-pad's left/right is claimed by view switching
+    // above and the transport is a fixed signal set. One press toggles that
+    // side and forces the other off, matching a real stalk.
+    // forceRightIndicator (declared below with the other S10 flags) still
+    // seeds the initial value for bench perf runs via --right-indicator-on.
+    property bool leftIndicatorOn: true
+    property bool rightIndicatorOn: root.forceRightIndicator
+
+    Connections {
+        target: VehicleData.steeringWheel
+        function onL3Pressed() {
+            root.leftIndicatorOn = !root.leftIndicatorOn
+            if (root.leftIndicatorOn)
+                root.rightIndicatorOn = false
+        }
+        function onR3Pressed() {
+            root.rightIndicatorOn = !root.rightIndicatorOn
+            if (root.rightIndicatorOn)
+                root.leftIndicatorOn = false
+        }
+    }
+
+    // Generic error surface. VehicleData.errorOccurred is real (wired to
+    // SteeringWheelController's UDP bind failure) and can also be triggered
+    // manually via VehicleData.raiseError("...") for testing.
+    Connections {
+        target: VehicleData
+        function onErrorOccurred(message) {
+            errorDialog.show(message)
+        }
+    }
+
     // Which content-area view is showing: 0 Car/Road, 1 Map, 2 Contacts,
     // 3 Music, 4 Fuel, 5 Settings. Matches the reference's Screen01.qml
     // numbering exactly, driven by TopBar's viewSelected (see below).
@@ -709,7 +765,8 @@ Window {
             showPillShadow: root.showShadowPill
             showLeftGlow: root.showShadowLeftGlow
             showRightGlow: root.showShadowRightGlow
-            rightIndicatorOn: root.forceRightIndicator
+            leftIndicatorOn: root.leftIndicatorOn
+            rightIndicatorOn: root.rightIndicatorOn
         }
 
         // ════════════════════════════════════════════════════
@@ -785,6 +842,11 @@ Window {
         anchors.fill: parent
         visible: root.showSplash
         z: 999
+    }
+
+    ErrorDialog {
+        id: errorDialog
+        anchors.fill: parent
     }
 
     // Print the resolved geometry so the mapping is verifiable on target
