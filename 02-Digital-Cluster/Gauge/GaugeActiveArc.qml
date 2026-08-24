@@ -105,8 +105,7 @@ Item {
     Shape {
         id: outerBorder
         anchors.fill: parent
-        layer.enabled: true
-        layer.samples: 8
+        preferredRendererType: Shape.CurveRenderer
 
         visible: arcRoot.showOuterBorder
         opacity: arcRoot.outerBorderOpacity
@@ -144,8 +143,7 @@ Item {
     // sweeping the same angular range as the needle has covered.
     Shape {
         anchors.fill: parent
-        layer.enabled: true
-        layer.samples: 8
+        preferredRendererType: Shape.CurveRenderer
 
         // ── BIND opacity directly to the computed property ──
         opacity: arcRoot.haloOpacity

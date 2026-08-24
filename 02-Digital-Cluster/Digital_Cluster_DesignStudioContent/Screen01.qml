@@ -10,6 +10,7 @@ import QtQuick.Studio.Components 1.0
 import Gauge
 import BottomLayer
 import QtQuick.Layouts
+import Backend 1.0
 
 Rectangle {
     id: digitalCluster
@@ -21,9 +22,9 @@ Rectangle {
     // ── simulation state ──────────────────────────────
     property real simSpeed: 0
     property real simRpm: 0
-    property real simFuel: 100
+    property real simFuel: 0
+    property real simTemp: 70
     property bool accelerating: true
-
     /*
      * The visible center view is now owned by the cluster backend.
      *
@@ -41,32 +42,48 @@ Rectangle {
      */
     readonly property int currentView: clusterNavigation.effectiveView
 
+    /*
+     * Wheel left/right still cycle the view, but they now go through
+     * selectView() rather than assigning currentView directly: the property
+     * is read-only once the backend owns it. Same reconciliation as
+     * Qnx-Cluster/qml/Main.qml, so both clusters behave identically.
+     */
+    Connections {
+        target: VehicleData.steeringWheel
+        function onLeftPressed() {
+            clusterNavigation.selectView((digitalCluster.currentView - 1 + 6) % 6)
+        }
+        function onRightPressed() {
+            clusterNavigation.selectView((digitalCluster.currentView + 1) % 6)
+        }
+    }
+
     property string simMode: {
         if (simRpm < 2) return "ECO"
         if (simRpm < 4) return "NORMAL"
         return "SPORT"
     }
 
-    Timer {
-        id: simTimer
-        interval: 100
-        running: false
-        repeat: true
-        onTriggered: {
-            if (digitalCluster.accelerating) {
-                digitalCluster.simSpeed = Math.min(240, digitalCluster.simSpeed + 1.5)
-                digitalCluster.simRpm   = Math.min(8,   digitalCluster.simRpm   + 0.05)
-                digitalCluster.simFuel  = Math.max(0,   digitalCluster.simFuel  - 1)
-                if (digitalCluster.simSpeed >= 240)
-                    digitalCluster.accelerating = false
-            } else {
-                digitalCluster.simSpeed = Math.max(0, digitalCluster.simSpeed - 2)
-                digitalCluster.simRpm   = Math.max(0, digitalCluster.simRpm   - 0.07)
-                if (digitalCluster.simSpeed <= 0)
-                    digitalCluster.accelerating = true
-            }
-        }
-    }
+    // Timer {
+    //     id: simTimer
+    //     interval: 100
+    //     running: false
+    //     repeat: true
+    //     onTriggered: {
+    //         if (digitalCluster.accelerating) {
+    //             digitalCluster.simSpeed = Math.min(240, digitalCluster.simSpeed + 1.5)
+    //             digitalCluster.simRpm   = Math.min(8,   digitalCluster.simRpm   + 0.05)
+    //             digitalCluster.simFuel  = Math.max(0,   digitalCluster.simFuel  - 1)
+    //             if (digitalCluster.simSpeed >= 240)
+    //                 digitalCluster.accelerating = false
+    //         } else {
+    //             digitalCluster.simSpeed = Math.max(0, digitalCluster.simSpeed - 2)
+    //             digitalCluster.simRpm   = Math.max(0, digitalCluster.simRpm   - 0.07)
+    //             if (digitalCluster.simSpeed <= 0)
+    //                 digitalCluster.accelerating = true
+    //         }
+    //     }
+    // }
 
     // ── THE STARTUP CHOREOGRAPHY ──────────────────────
     SequentialAnimation {
@@ -112,6 +129,16 @@ Rectangle {
                     NumberAnimation { target: digitalCluster; property: "simRpm"; from: 0; to: 8; duration: 1000; easing.type: Easing.InOutSine }
                     NumberAnimation { target: digitalCluster; property: "simRpm"; from: 8; to: 0; duration: 1000; easing.type: Easing.InOutSine }
                 }
+                // Fuel Sweep (0 -> 100 -> 0)
+                SequentialAnimation {
+                    NumberAnimation { target: digitalCluster; property: "simFuel"; from: 0; to: 100; duration: 1000; easing.type: Easing.InOutSine }
+                    NumberAnimation { target: digitalCluster; property: "simFuel"; from: 100; to: 0; duration: 1000; easing.type: Easing.InOutSine }
+                }
+                // Temp Sweep (70 -> 120 -> 70)
+                SequentialAnimation {
+                    NumberAnimation { target: digitalCluster; property: "simTemp"; from: 70; to: 120; duration: 1000; easing.type: Easing.InOutSine }
+                    NumberAnimation { target: digitalCluster; property: "simTemp"; from: 120; to: 70; duration: 1000; easing.type: Easing.InOutSine }
+                }
             }
 
             PropertyAction { target: speedGauge; property: "enableSmoothing"; value: true }
@@ -119,10 +146,14 @@ Rectangle {
         }
 
         // Phase 3: Hand off to the standard loop
+        // Phase 3: Hand off to the standard loop
         ScriptAction {
             script: {
-                digitalCluster.accelerating = true
-                simTimer.start()
+                // Permanently bind the variables to the C++ Backend!
+                digitalCluster.simSpeed = Qt.binding(function() { return VehicleData.speedProvider.speedValue; })
+                digitalCluster.simRpm = Qt.binding(function() { return VehicleData.rpmProvider.rpmValue; })
+                digitalCluster.simFuel = Qt.binding(function() { return VehicleData.bottomBar.fuelProvider.fuelValue; })
+                digitalCluster.simTemp = Qt.binding(function() { return VehicleData.bottomBar.engineTempProvider.tempValue; })
             }
         }
     }
@@ -286,11 +317,10 @@ Rectangle {
 
         fuelPercent: digitalCluster.simFuel
         rangeKm:     Math.round(digitalCluster.simFuel * 5.2)
-        motorTempC:  90
-        maxTempC:    120
-        outsideTempText: "14 °C"
-        odometerText:    "33560.5 km"
-        clockText:       "10:32 PM"
+        motorTempC:  digitalCluster.simTemp
+        outsideTempText: VehicleData.bottomBar.envTempProvider.tempValue + " °C"
+        odometerText:    VehicleData.bottomBar.totalKmsProvider.kmsValue + " km"
+        clockText:       VehicleData.bottomBar.timeProvider.timeValue
     }
 
     // ── SPLASH SCREEN (Sits directly on top of everything) ──

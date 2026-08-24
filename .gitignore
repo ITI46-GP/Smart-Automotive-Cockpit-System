@@ -57,3 +57,6 @@ Thumbs.db
 .qt/
 *.bak
 *.old
+*/build-qnx/
+build-qnx/
+Qnx-Cluster/.git.standalone-backup/

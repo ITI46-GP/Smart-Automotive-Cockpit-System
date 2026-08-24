@@ -4,7 +4,7 @@ import Digital_Cluster_DesignStudio
 Window {
     width: mainScreen.width
     height: mainScreen.height
-    flags: Qt.FramelessWindowHint
+    // flags: Qt.FramelessWindowHint
     x:0
     y:0
     visible: true

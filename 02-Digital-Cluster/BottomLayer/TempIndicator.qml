@@ -13,8 +13,10 @@ Item {
 
     // ── PUBLIC API ────────────────────────────────────
     property real motorTempC: 90       // °C
-    property real maxTempC:   120      // max scale
-    property real dangerStartPercent: 0.8   // last 20% are red
+    property real minTempC:   70       // Start the gauge at 70°C
+    property real maxTempC:   120      // max scale (up to 120°C)
+    property real dangerStartPercent: (105 - minTempC) / (maxTempC - minTempC) // Starts turning red at 105°C
+    property real coldEndPercent:     (82 - minTempC) / (maxTempC - minTempC)  // Light blue up to 82°C
     property url  iconSource: ""
 
     implicitWidth:  220
@@ -32,7 +34,7 @@ Item {
             spacing: 6
 
             Text {
-                text: tempRoot.motorTempC + " °C"
+                text: Math.round(tempRoot.motorTempC) + " °C"
                 color: Theme.colorTextPrimary
                 font.family:    Theme.fontPrimary
                 font.pixelSize: 14
@@ -67,9 +69,11 @@ Item {
             Layout.fillWidth: true
             Layout.preferredHeight: 14
             value:    tempRoot.motorTempC
+            minValue: tempRoot.minTempC
             maxValue: tempRoot.maxTempC
             segmentCount: 30
-            dangerThresholdPercent: tempRoot.dangerStartPercent
+            endThresholdPercent: tempRoot.dangerStartPercent
+            startThresholdPercent:   tempRoot.coldEndPercent
         }
 
         // ── Labels: C, Normal, H ────────────────────

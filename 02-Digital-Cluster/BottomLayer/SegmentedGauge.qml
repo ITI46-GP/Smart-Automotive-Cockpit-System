@@ -24,8 +24,9 @@ Item {
     //  PUBLIC API
     // ════════════════════════════════════════════════════
 
-    // The driving value (0–maxValue)
+    // The driving value (minValue–maxValue)
     property real value:    0
+    property real minValue: 0
     property real maxValue: 100
 
     // Number of segment ticks
@@ -34,19 +35,22 @@ Item {
     // Segment dimensions
     property real segmentWidth:    2
     property real segmentHeight:   14
-    property real segmentSpacing:  4
+    property real defaultSpacing:  4
 
     // Colors
     property color colorActive:  Theme.colorTextPrimary
     property color colorPassive: Theme.colorTextMuted
-    property color colorDanger:  Theme.colorDanger
+    property color colorEnd:     Theme.colorDanger
+    property color colorStart:   "#00BFFF" // Light blue default
 
-    // Danger zone (last X% of segments turn red when active)
-    // Set to 0 to disable
-    property real  dangerThresholdPercent: 0      // e.g., 0.8 = last 20% are danger
+    // End zone (last X% of segments turn colorEnd)
+    property real  endThresholdPercent: 0      
 
-    // Auto-size to fit all segments
-    implicitWidth:  segmentCount * segmentWidth + (segmentCount - 1) * segmentSpacing
+    // Start zone (first X% of segments turn colorStart)
+    property real  startThresholdPercent: 0
+
+    // Auto-size to fit all segments by default
+    implicitWidth:  segmentCount * segmentWidth + (segmentCount - 1) * defaultSpacing
     implicitHeight: segmentHeight
 
 
@@ -54,21 +58,23 @@ Item {
     //  INTERNAL — compute how many segments are active
     // ════════════════════════════════════════════════════
     //
-    // pct = value / maxValue (0–1)
+    // pct = (value - minValue) / (maxValue - minValue)
     // activeCount = number of segments to highlight
     readonly property real percent:
-        Math.max(0, Math.min(value / maxValue, 1.0))
+        Math.max(0, Math.min((value - gaugeRoot.minValue) / (gaugeRoot.maxValue - gaugeRoot.minValue), 1.0))
 
     readonly property int activeCount:
         Math.round(percent * segmentCount)
 
 
-    // ════════════════════════════════════════════════════
     //  SEGMENT ROW
     // ════════════════════════════════════════════════════
+    // Calculate dynamic spacing so the segments stretch to fill the exact width provided
+    readonly property real dynamicSpacing: (width - (segmentCount * segmentWidth)) / Math.max(1, segmentCount - 1)
+
     Row {
         anchors.fill: parent
-        spacing: gaugeRoot.segmentSpacing
+        spacing: gaugeRoot.dynamicSpacing
 
         Repeater {
             model: gaugeRoot.segmentCount
@@ -87,18 +93,49 @@ Item {
                     gaugeRoot.dangerThresholdPercent > 0
                     && (index / gaugeRoot.segmentCount) >= gaugeRoot.dangerThresholdPercent
 
-                // Color resolution:
-                //  - Active + danger zone → red
-                //  - Active otherwise     → primary white
-                //  - Passive              → muted gray
+                // Is this segment in the start zone?
+                property bool isStartSegment:
+                    gaugeRoot.startThresholdPercent > 0
+                    && (index / gaugeRoot.segmentCount) <= gaugeRoot.startThresholdPercent
+
+                // Is this segment in the end zone?
+                property bool isEndSegment:
+                    gaugeRoot.endThresholdPercent > 0
+                    && (index / gaugeRoot.segmentCount) >= gaugeRoot.endThresholdPercent
+                    
+                property bool isNormalSegment: !isStartSegment && !isEndSegment
+
+                // Static colors based purely on position!
                 color: {
-                    if (isActive && isDangerZone) return gaugeRoot.colorDanger
-                    if (isActive) return gaugeRoot.colorActive
-                    return gaugeRoot.colorPassive
+                    if (isEndSegment) return gaugeRoot.colorEnd
+                    if (isStartSegment) return gaugeRoot.colorStart
+                    return gaugeRoot.colorActive
                 }
 
-                // Passive segments are dimmer
-                opacity: isActive ? 1.0 : 0.4
+                // Which zone is the current value residing in?
+                property bool inStartZone: gaugeRoot.startThresholdPercent > 0 && gaugeRoot.percent <= gaugeRoot.startThresholdPercent
+                property bool inEndZone: gaugeRoot.endThresholdPercent > 0 && gaugeRoot.percent >= gaugeRoot.endThresholdPercent
+                property bool inNormalZone: !inStartZone && !inEndZone
+
+                // Does this segment belong to the current active zone?
+                property bool isMyZone: 
+                    (isStartSegment && inStartZone) || 
+                    (isEndSegment && inEndZone) || 
+                    (isNormalSegment && inNormalZone)
+
+                // Opacity resolution:
+                // - Reached (isActive): High Opacity (keeps the bar filled)
+                // - Unreached but in Current Zone: Medium Opacity
+                // - Unreached and outside Current Zone: Low Opacity
+                opacity: {
+                    if (isActive) {
+                        return 1.0
+                    } else if (isMyZone) {
+                        return 0.3
+                    } else {
+                        return 0.1
+                    }
+                }
 
                 // Smooth color transitions
                 Behavior on color {
