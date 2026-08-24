@@ -24,6 +24,7 @@
 #include "ContentArea/ContactsModel.h"
 #include "ContentArea/MusicController.h"
 #include "SteeringWheelController.h"
+#include "DtcProvider.h"
 
 class QQmlEngine;
 class QJSEngine;
@@ -41,6 +42,7 @@ class VehicleDataProvider : public QObject
     Q_PROPERTY(ContactsModel* contactsModel READ contactsModel CONSTANT)
     Q_PROPERTY(MusicController* musicController READ musicController CONSTANT)
     Q_PROPERTY(SteeringWheelController* steeringWheel READ steeringWheel CONSTANT)
+    Q_PROPERTY(DtcProvider* dtc READ dtc CONSTANT)
 
 public:
     explicit VehicleDataProvider(const QString &telemetryPath, QObject *parent = nullptr);
@@ -52,6 +54,7 @@ public:
     ContactsModel* contactsModel() const;
     MusicController* musicController() const;
     SteeringWheelController* steeringWheel() const;
+    DtcProvider* dtc() const;
 
     // Called once by the QML engine to construct the singleton. Owns the
     // one place the telemetry path is hardcoded, matching the reference's
@@ -78,6 +81,7 @@ private:
     ContactsModel* contactsModel_;
     MusicController* musicController_;
     SteeringWheelController* steeringWheel_;
+    DtcProvider* dtc_;
 
     QTimer* timer_;
     QString telemetryPath_;

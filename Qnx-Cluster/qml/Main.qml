@@ -116,6 +116,14 @@ Window {
             clusterNavigation.selectView((root.currentView + 1) % 6)
         }
         function onOkPressed() {
+            // A fault popup owns OK while it is up: there is no touchscreen
+            // on the bench, so without this the driver has no way to clear
+            // one. Falls through to the old stub otherwise, so this does not
+            // consume OK for any future per-view confirm action.
+            if (faultPopup.currentFault) {
+                faultPopup.dismissCurrent()
+                return
+            }
             // Design intentionally left open by the handoff ("pick what fits
             // the UI") -- no per-view confirm action exists in the backend
             // yet (e.g. ContactsModel has no "call" invokable), so this is a
@@ -128,9 +136,15 @@ Window {
     // left/right, since the D-pad's left/right is claimed by view switching
     // above and the transport is a fixed signal set. One press toggles that
     // side and forces the other off, matching a real stalk.
-    // forceRightIndicator (declared below with the other S10 flags) still
-    // seeds the initial value for bench perf runs via --right-indicator-on.
-    property bool leftIndicatorOn: true
+    // forceLeftIndicator / forceRightIndicator (declared below with the other
+    // S10 flags) still seed the initial values for bench perf runs.
+    //
+    // leftIndicatorOn used to be a hardcoded `true`, which is why the left
+    // indicator blinked permanently and no button could ever turn it off:
+    // the wheel signal that drives it (BTN_L3) was not part of the transport,
+    // so onL3Pressed below could never fire. Both sides now default off and
+    // are driven only by the wheel.
+    property bool leftIndicatorOn: root.forceLeftIndicator
     property bool rightIndicatorOn: root.forceRightIndicator
 
     Connections {
@@ -139,12 +153,22 @@ Window {
             root.leftIndicatorOn = !root.leftIndicatorOn
             if (root.leftIndicatorOn)
                 root.rightIndicatorOn = false
+            root.logIndicators()
         }
         function onR3Pressed() {
             root.rightIndicatorOn = !root.rightIndicatorOn
             if (root.rightIndicatorOn)
                 root.leftIndicatorOn = false
+            root.logIndicators()
         }
+    }
+
+    // The cluster has no attached panel -- it is captured and streamed -- so
+    // the log is the only way to confirm a wheel press landed without
+    // watching the far end.
+    function logIndicators() {
+        console.log("[Indicator] left=" + root.leftIndicatorOn
+                    + " right=" + root.rightIndicatorOn)
     }
 
     // Generic error surface. VehicleData.errorOccurred is real (wired to
@@ -259,6 +283,10 @@ Window {
     // project measures the honest worst case (S3, S7), not just the idle
     // default, so this flag can force it on for that measurement.
     readonly property bool forceRightIndicator: Qt.application.arguments.indexOf("--right-indicator-on")   !== -1
+    // Same, for the left side. The left glow used to be permanently on
+    // because leftIndicatorOn was hardcoded true; now that both indicators
+    // default off, the S10 glow measurement needs this to force it back on.
+    readonly property bool forceLeftIndicator:  Qt.application.arguments.indexOf("--left-indicator-on")    !== -1
 
     // Splash screen (ported from Screen01.qml, see SplashScreen.qml). One-
     // time ~3.3 s startup play, does not touch steady-state measurement.
@@ -846,6 +874,15 @@ Window {
 
     ErrorDialog {
         id: errorDialog
+        anchors.fill: parent
+    }
+
+    // Vehicle fault popups, driven by the DTC bitmask the gateway publishes
+    // to /tmp/dtc.txt. Separate from ErrorDialog on purpose: that one is a
+    // bare message string, whereas a fault carries a code, a consequence and
+    // a severity that the driver needs to see.
+    FaultPopup {
+        id: faultPopup
         anchors.fill: parent
     }
 

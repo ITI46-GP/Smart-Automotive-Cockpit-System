@@ -50,6 +50,7 @@ qt_add_qml_module(QnxClusterApp
     qml/ContentArea/Road.qml
     qml/ContentArea/SplashScreen.qml
     qml/ContentArea/ErrorDialog.qml
+    qml/ContentArea/FaultPopup.qml
     qml/Gauge/GaugeActiveArc.qml
     qml/Gauge/GaugeSpeedNumber.qml
     qml/Gauge/GaugeLabels.qml
@@ -85,6 +86,8 @@ qt_add_qml_module(QnxClusterApp
     src/Backend/VehicleDataProvider.cpp
     src/Backend/SteeringWheelController.h
     src/Backend/SteeringWheelController.cpp
+    src/Backend/DtcProvider.h
+    src/Backend/DtcProvider.cpp
     src/Backend/BottomBar/FuelProvider.h
     src/Backend/BottomBar/FuelProvider.cpp
     src/Backend/BottomBar/EngineTempProvider.h

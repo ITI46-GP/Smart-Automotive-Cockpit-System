@@ -17,6 +17,10 @@ VehicleDataProvider::VehicleDataProvider(const QString &telemetryPath, QObject *
     steeringWheel_ = new SteeringWheelController(this);
     connect(steeringWheel_, &SteeringWheelController::bindFailed,
             this, &VehicleDataProvider::errorOccurred);
+    // Flat /tmp, not /tmp/ivi: this guest's filesystem returns ENOSYS for
+    // mkdir(), so the gateway publishes flat (see BottomBarDataProvider's
+    // note and the gateway's --cluster-dir /tmp in start_apps.sh).
+    dtc_ = new DtcProvider("/tmp/dtc.txt", this);
     timer_ = new QTimer(this);
     connect(timer_, &QTimer::timeout, this, &VehicleDataProvider::updateData);
     timer_->start(50);
@@ -84,6 +88,7 @@ void VehicleDataProvider::updateData()
     }
 
     bottomBar_->updateData();
+    dtc_->getValueFromFile();
 }
 
 SpeedProvider* VehicleDataProvider::speedProvider() const { return speedProvider_; }
@@ -93,6 +98,7 @@ BottomBarDataProvider* VehicleDataProvider::bottomBar() const { return bottomBar
 ContactsModel* VehicleDataProvider::contactsModel() const { return contactsModel_; }
 MusicController* VehicleDataProvider::musicController() const { return musicController_; }
 SteeringWheelController* VehicleDataProvider::steeringWheel() const { return steeringWheel_; }
+DtcProvider* VehicleDataProvider::dtc() const { return dtc_; }
 
 void VehicleDataProvider::raiseError(const QString &message)
 {
