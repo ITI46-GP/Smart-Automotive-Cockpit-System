@@ -10,9 +10,17 @@
 BottomBarDataProvider::BottomBarDataProvider(QObject *parent)
     : QObject{parent}
 {
-    fuelProvider_ = new FuelProvider("/tmp/ivi/fuel.txt", this);
+    // /tmp/ivi -> /tmp: this guest's filesystem doesn't implement mkdir()
+    // ("Function not implemented", same class of bug as the symlink/hardlink
+    // issue on /var -- see resolveTelemetryPath() below). The gateway can't
+    // create a subdirectory at runtime, so it publishes flat into /tmp
+    // instead (already proven writable -- qnxgateway.log et al. live there).
+    // Requires the gateway launched with --cluster-dir /tmp (see the guest's
+    // start_apps.sh) and its own fix to stop treating a non-EEXIST mkdir
+    // failure as fatal when the target already exists.
+    fuelProvider_ = new FuelProvider("/tmp/fuel.txt", this);
     engineTempProvider_ = new EngineTempProvider("/tmp/ivi/engine_temp.txt", this);
-    envTempProvider_ = new EnvTempProvider("/tmp/ivi/env_temp.txt", this);
+    envTempProvider_ = new EnvTempProvider("/tmp/env_temp.txt", this);
     totalKmsProvider_ = new TotalKmsProvider("/tmp/ivi/total_kms.txt", this);
     timeProvider_ = new TimeProvider(this);
 }
