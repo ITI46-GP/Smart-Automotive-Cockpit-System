@@ -7,10 +7,12 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QQuickWindow>
+#include <QSurfaceFormat>
 #include <QStringList>
 
 #include <QMetaObject>
 #include <cstdint>
+#include <cstdlib>
 #include <utility>
 
 #include "MapFrameBackend/MapFrameImageProvider.hpp"
@@ -21,6 +23,37 @@
 
 int main(int argc, char *argv[])
 {
+    /*
+     * Frame-rate cap. A swap interval of N makes the buffer swap block for N
+     * vblanks, so a 60 Hz display renders at 60/N fps.
+     *
+     * Display 4 has no physical panel attached -- the only consumer is the
+     * 640x360 RTP stream, which runs at 30 fps, as does the RPi pipeline
+     * receiving it. Rendering every vblank therefore produces one frame in
+     * two that the DPU capture discards before anyone sees it. Measured on
+     * the board: the cluster costs ~90% of a core at 60 fps and ~48% at 30.
+     *
+     * Parsed straight from argv rather than app.arguments() because the
+     * default surface format has to be set before the first window exists,
+     * and that happens inside QGuiApplication on some platforms.
+     */
+    {
+        int interval = 1;
+        for (int i = 1; i + 1 < argc; ++i) {
+            if (qstrcmp(argv[i], "--swap-interval") == 0) {
+                interval = atoi(argv[i + 1]);
+                if (interval < 1)
+                    interval = 1;
+            }
+        }
+        if (interval != 1) {
+            QSurfaceFormat fmt = QSurfaceFormat::defaultFormat();
+            fmt.setSwapInterval(interval);
+            QSurfaceFormat::setDefaultFormat(fmt);
+            qInfo("swap-interval=%d requested", interval);
+        }
+    }
+
     QGuiApplication app(argc, argv);
 
     // S7 experiment: glyph render path.
