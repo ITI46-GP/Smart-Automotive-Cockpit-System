@@ -18,6 +18,10 @@
 #include "MapFrameBackend/MapFrameImageProvider.hpp"
 #include "MapFrameBackend/MapFrameModel.hpp"
 #include "MapFrameBackend/MapFrameServer.hpp"
+
+#include "MediaBackend/ClusterMediaModel.hpp"
+#include "MediaBackend/HnmcMediaServer.hpp"
+
 #include "NavigationBackend/ClusterNavigationModel.hpp"
 #include "NavigationBackend/HnclNavigationServer.hpp"
 
@@ -71,11 +75,13 @@ int main(int argc, char *argv[])
      *   QNX Digital Cluster    = TCP server
      *   TCP port               = 6200
      *
-     * This is completely independent from HNVG / TCP 6100.
+     * Completely independent from HNVG / TCP 6100.
      */
     hypernova::cluster::ClusterNavigationModel navigationModel;
-    auto* mapFrameImageProvider =
+
+    auto *mapFrameImageProvider =
             new hypernova::cluster::MapFrameImageProvider;
+
     hypernova::cluster::MapFrameModel mapFrameModel(
             mapFrameImageProvider);
 
@@ -94,7 +100,8 @@ int main(int argc, char *argv[])
                 },
 
                 [&navigationModel](
-                        const hypernova::cluster::hncl::NavigationState& state) {
+                        const hypernova::cluster::hncl::NavigationState &state) {
+
                     navigationModel.postNavigationState(
                             state);
 
@@ -110,9 +117,12 @@ int main(int argc, char *argv[])
 
                 [&navigationModel, &mapFrameModel]() {
                     navigationModel.postNavigationClear();
+
                     QMetaObject::invokeMethod(
                             &mapFrameModel,
-                            [&mapFrameModel] { mapFrameModel.clear(); },
+                            [&mapFrameModel] {
+                                mapFrameModel.clear();
+                            },
                             Qt::QueuedConnection);
 
                     qInfo()
@@ -120,7 +130,15 @@ int main(int argc, char *argv[])
                 }
             });
 
-    /* Independent Android MapLibre JPEG mirror; HNMF / TCP 6201 only. */
+    /*
+     * Independent Android MapLibre JPEG mirror.
+     *
+     * HNMF transport:
+     *
+     *   Android Navigation = TCP client
+     *   QNX Digital Cluster = TCP server
+     *   TCP port = 6201
+     */
     hypernova::cluster::MapFrameServer mapFrameServer(
             6201,
             {
@@ -128,14 +146,86 @@ int main(int argc, char *argv[])
                         QImage image,
                         std::uint32_t sequence,
                         std::uint64_t captureTimestampMs) {
+
                     mapFrameModel.postFrame(
                             std::move(image),
                             sequence,
                             captureTimestampMs);
                 },
+
                 [](bool connected) {
-                    qInfo() << "HNMF Android map-frame connection:"
-                            << (connected ? "READY" : "DISCONNECTED");
+                    qInfo()
+                            << "HNMF Android map-frame connection:"
+                            << (connected
+                                    ? "READY"
+                                    : "DISCONNECTED");
+                }
+            });
+
+    /*
+     * Android -> QNX Digital Cluster media-state backend.
+     *
+     * Dedicated HNMC transport:
+     *
+     *   Android HyperNova Media = TCP client
+     *   QNX Digital Cluster     = TCP server
+     *   TCP port                = 6300
+     *
+     * HNMC is independent from:
+     *
+     *   HNVG 6100
+     *   HNCL 6200
+     *   HNMF 6201
+     */
+    hypernova::cluster::ClusterMediaModel mediaModel;
+
+    hypernova::cluster::HnmcMediaServer mediaServer(
+            6300,
+            {
+                [&mediaModel](bool connected) {
+                    mediaModel.postConnectionState(
+                            connected);
+
+                    qInfo()
+                            << "HNMC Android media connection:"
+                            << (connected
+                                    ? "READY"
+                                    : "DISCONNECTED");
+                },
+
+                [&mediaModel](
+                        const hypernova::cluster::hnmc::MediaState &state) {
+
+                    mediaModel.postMediaState(
+                            state);
+
+                    qInfo()
+                            << "HNMC MEDIA_STATE"
+                            << "hasMedia=" << state.hasMedia
+                            << "playing=" << state.playing
+                            << "positionMs="
+                            << static_cast<qulonglong>(
+                                    state.positionMs)
+                            << "durationMs="
+                            << static_cast<qulonglong>(
+                                    state.durationMs)
+                            << "title="
+                            << QString::fromUtf8(
+                                    state.title.data(),
+                                    static_cast<qsizetype>(
+                                            state.title.size()))
+                            << "artist="
+                            << QString::fromUtf8(
+                                    state.artist.data(),
+                                    static_cast<qsizetype>(
+                                            state.artist.size()));
+                },
+
+                [&mediaModel]() {
+                    mediaModel.postMediaClear();
+
+                    qInfo()
+                            << "HNMC MEDIA_CLEAR";
                 }
             });
 
@@ -149,10 +239,21 @@ int main(int argc, char *argv[])
     }
 
     if (!mapFrameServer.start()) {
-        qWarning() << "HNMF: failed to listen on TCP 6201";
+        qWarning()
+                << "HNMF: failed to listen on TCP 6201";
     } else {
-        qInfo() << "HNMF: Digital Cluster frame server listening on TCP"
+        qInfo()
+                << "HNMF: Digital Cluster frame server listening on TCP"
                 << mapFrameServer.boundPort();
+    }
+
+    if (!mediaServer.start()) {
+        qWarning()
+                << "HNMC: failed to listen on TCP 6300";
+    } else {
+        qInfo()
+                << "HNMC: Digital Cluster media server listening on TCP"
+                << mediaServer.boundPort();
     }
 
     QQmlApplicationEngine engine;
@@ -161,23 +262,25 @@ int main(int argc, char *argv[])
             QStringLiteral("hnmf"),
             mapFrameImageProvider);
 
-    /*
-     * Prepared for the next integration step.
-     *
-     * QML will later use:
-     *
-     *   clusterNavigation.connected
-     *   clusterNavigation.navigationActive
-     *   clusterNavigation.effectiveView
-     *   clusterNavigation.destination
-     *   clusterNavigation.selectView(...)
-     */
     engine.rootContext()->setContextProperty(
             QStringLiteral("clusterNavigation"),
             &navigationModel);
+
     engine.rootContext()->setContextProperty(
             QStringLiteral("mapFrames"),
             &mapFrameModel);
+
+    /*
+     * Media QML binding is intentionally separate from the old
+     * VehicleData.musicController mock implementation.
+     *
+     * Next step:
+     *
+     * MusicView.qml -> clusterMedia
+     */
+    engine.rootContext()->setContextProperty(
+            QStringLiteral("clusterMedia"),
+            &mediaModel);
 
     QObject::connect(
             &engine,
@@ -195,6 +298,7 @@ int main(int argc, char *argv[])
     const int result =
             app.exec();
 
+    mediaServer.stop();
     mapFrameServer.stop();
     navigationServer.stop();
 

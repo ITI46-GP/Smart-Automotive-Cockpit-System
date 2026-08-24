@@ -36,6 +36,13 @@ qt_add_executable(QnxClusterApp
     src/MapFrameBackend/MapFrameModel.cpp
     src/MapFrameBackend/MapFrameServer.hpp
     src/MapFrameBackend/MapFrameServer.cpp
+
+    src/MediaBackend/HnmcProtocol.hpp
+    src/MediaBackend/HnmcProtocol.cpp
+    src/MediaBackend/HnmcMediaServer.hpp
+    src/MediaBackend/HnmcMediaServer.cpp
+    src/MediaBackend/ClusterMediaModel.hpp
+    src/MediaBackend/ClusterMediaModel.cpp
 )
 
 qt_add_qml_module(QnxClusterApp
@@ -111,6 +118,7 @@ target_include_directories(QnxClusterApp PRIVATE
     src/Backend
     src/NavigationBackend
     src/MapFrameBackend
+    src/MediaBackend
 )
 
 target_link_libraries(QnxClusterApp PRIVATE
