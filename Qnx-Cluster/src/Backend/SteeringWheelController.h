@@ -18,6 +18,9 @@ signals:
     void leftPressed();
     void rightPressed();
     void okPressed();
+    void l3Pressed();
+    void r3Pressed();
+    void bindFailed(const QString &reason);
 
 private slots:
     void processPendingDatagrams();

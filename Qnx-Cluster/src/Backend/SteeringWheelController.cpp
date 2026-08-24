@@ -44,9 +44,12 @@ SteeringWheelController::SteeringWheelController(QObject *parent)
     // exactly the kind of fault that presents as "the buttons do nothing" and
     // costs an hour on the bench, so say so loudly instead of failing silently.
     if (!bound) {
+        const QString reason = m_socket->errorString();
         qWarning() << "[SteeringWheel] FAILED to bind UDP" << port
-                   << "-" << m_socket->errorString()
+                   << "-" << reason
                    << "- steering-wheel buttons will not respond.";
+        emit bindFailed(QStringLiteral("Steering wheel UDP port %1 unavailable: %2")
+                             .arg(port).arg(reason));
     } else {
         qInfo() << "[SteeringWheel] listening for BTN_* on UDP" << port;
     }
@@ -70,6 +73,10 @@ void SteeringWheelController::processPendingDatagrams()
             emit rightPressed();
         } else if (cmd == QLatin1String("BTN_OK")) {
             emit okPressed();
+        } else if (cmd == QLatin1String("BTN_L3")) {
+            emit l3Pressed();
+        } else if (cmd == QLatin1String("BTN_R3")) {
+            emit r3Pressed();
         }
         // Unknown commands are ignored on purpose: this socket is open to the
         // bench LAN, so anything else that lands on the port must not be able

@@ -29,6 +29,20 @@ qt_add_executable(QnxClusterApp
     src/NavigationBackend/ClusterPresentationState.cpp
     src/NavigationBackend/ClusterNavigationModel.hpp
     src/NavigationBackend/ClusterNavigationModel.cpp
+
+    src/MapFrameBackend/MapFrameImageProvider.hpp
+    src/MapFrameBackend/MapFrameImageProvider.cpp
+    src/MapFrameBackend/MapFrameModel.hpp
+    src/MapFrameBackend/MapFrameModel.cpp
+    src/MapFrameBackend/MapFrameServer.hpp
+    src/MapFrameBackend/MapFrameServer.cpp
+
+    src/MediaBackend/HnmcProtocol.hpp
+    src/MediaBackend/HnmcProtocol.cpp
+    src/MediaBackend/HnmcMediaServer.hpp
+    src/MediaBackend/HnmcMediaServer.cpp
+    src/MediaBackend/ClusterMediaModel.hpp
+    src/MediaBackend/ClusterMediaModel.cpp
 )
 
 qt_add_qml_module(QnxClusterApp
@@ -42,6 +56,8 @@ qt_add_qml_module(QnxClusterApp
     qml/ContentArea/Car.qml
     qml/ContentArea/Road.qml
     qml/ContentArea/SplashScreen.qml
+    qml/ContentArea/ErrorDialog.qml
+    qml/ContentArea/FaultPopup.qml
     qml/Gauge/GaugeActiveArc.qml
     qml/Gauge/GaugeSpeedNumber.qml
     qml/Gauge/GaugeLabels.qml
@@ -77,6 +93,8 @@ qt_add_qml_module(QnxClusterApp
     src/Backend/VehicleDataProvider.cpp
     src/Backend/SteeringWheelController.h
     src/Backend/SteeringWheelController.cpp
+    src/Backend/DtcProvider.h
+    src/Backend/DtcProvider.cpp
     src/Backend/BottomBar/FuelProvider.h
     src/Backend/BottomBar/FuelProvider.cpp
     src/Backend/BottomBar/EngineTempProvider.h
@@ -99,6 +117,8 @@ target_include_directories(QnxClusterApp PRIVATE
     src
     src/Backend
     src/NavigationBackend
+    src/MapFrameBackend
+    src/MediaBackend
 )
 
 target_link_libraries(QnxClusterApp PRIVATE

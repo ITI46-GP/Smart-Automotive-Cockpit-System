@@ -93,6 +93,29 @@ Window {
         }
     }
 
+    // L3 / R3 -- paddle shifters, drive the turn-signal flashers. Separate
+    // row from the D-pad since they're physically distinct buttons on the
+    // real wheel, not part of the 5-button D-pad vocabulary.
+    RowLayout {
+        anchors.bottom: parent.bottom
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottomMargin: 12
+        spacing: 16
+
+        Button {
+            text: "L3"
+            font.pixelSize: 14
+            font.bold: true
+            onClicked: trigger("BTN_L3")
+        }
+        Button {
+            text: "R3"
+            font.pixelSize: 14
+            font.bold: true
+            onClicked: trigger("BTN_R3")
+        }
+    }
+
     // Keyboard support for easy testing
     Item {
         focus: true
@@ -103,5 +126,9 @@ Window {
         Keys.onRightPressed: trigger("BTN_RIGHT")
         Keys.onReturnPressed: trigger("BTN_OK")
         Keys.onEnterPressed: trigger("BTN_OK")
+        Keys.onPressed: (event) => {
+            if (event.key === Qt.Key_Q) trigger("BTN_L3")
+            else if (event.key === Qt.Key_E) trigger("BTN_R3")
+        }
     }
 }

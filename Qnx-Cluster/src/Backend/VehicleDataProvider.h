@@ -24,6 +24,7 @@
 #include "ContentArea/ContactsModel.h"
 #include "ContentArea/MusicController.h"
 #include "SteeringWheelController.h"
+#include "DtcProvider.h"
 
 class QQmlEngine;
 class QJSEngine;
@@ -41,6 +42,7 @@ class VehicleDataProvider : public QObject
     Q_PROPERTY(ContactsModel* contactsModel READ contactsModel CONSTANT)
     Q_PROPERTY(MusicController* musicController READ musicController CONSTANT)
     Q_PROPERTY(SteeringWheelController* steeringWheel READ steeringWheel CONSTANT)
+    Q_PROPERTY(DtcProvider* dtc READ dtc CONSTANT)
 
 public:
     explicit VehicleDataProvider(const QString &telemetryPath, QObject *parent = nullptr);
@@ -52,6 +54,7 @@ public:
     ContactsModel* contactsModel() const;
     MusicController* musicController() const;
     SteeringWheelController* steeringWheel() const;
+    DtcProvider* dtc() const;
 
     // Called once by the QML engine to construct the singleton. Owns the
     // one place the telemetry path is hardcoded, matching the reference's
@@ -62,6 +65,14 @@ public:
     // default at launch, so changing it never requires a rebuild.
     static QString resolveTelemetryPath();
 
+    // Generic error surface for QML's ErrorDialog. Callable directly for
+    // manual testing; real sources (e.g. SteeringWheelController::bindFailed)
+    // are wired to errorOccurred in the constructor instead of calling this.
+    Q_INVOKABLE void raiseError(const QString &message);
+
+signals:
+    void errorOccurred(const QString &message);
+
 private:
     SpeedProvider* speedProvider_;
     RpmProvider* rpmProvider_;
@@ -70,6 +81,7 @@ private:
     ContactsModel* contactsModel_;
     MusicController* musicController_;
     SteeringWheelController* steeringWheel_;
+    DtcProvider* dtc_;
 
     QTimer* timer_;
     QString telemetryPath_;

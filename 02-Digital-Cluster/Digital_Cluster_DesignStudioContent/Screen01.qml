@@ -25,7 +25,8 @@ Rectangle {
     property real simFuel: 0
     property real simTemp: 70
     property bool accelerating: true
-    property int currentView: 0
+    // property int currentView: 0
+    property int currentView: 2
 
     Connections {
         target: VehicleData.steeringWheel
