@@ -57,15 +57,34 @@ Item {
     // `carImage` for any position that needs to line up with what's drawn.
     property alias carImage: car
 
+    // ── speed ──────────────────────────────────────────────
+    //
+    // The sway, engine vibration, body roll and scale breathing all used to
+    // run at fixed amplitudes regardless of whether the car was moving, so a
+    // stationary vehicle still weaved and shook.
+    //
+    // Amplitudes now scale with speed, reaching their original values at
+    // referenceSpeedKph so the look at a normal cruise is unchanged. At a
+    // standstill every amplitude is 0 and the car sits still.
+    //
+    // The animations keep running rather than being stopped: each step
+    // re-reads its `to` when it begins, so amplitude tracks speed without
+    // restarting the sequence, and animating toward a constant 0 is cheap.
+    // Stopping them instead would freeze the car wherever its last step left
+    // it, off-centre.
+    property real speedKph: 0
+    readonly property real referenceSpeedKph: 100
+    readonly property real motion: Math.min(speedKph / referenceSpeedKph, 1.5)
+
     // horizontal sway (lane-keeping)
     SequentialAnimation on x {
         loops: Animation.Infinite
         running: true
-        NumberAnimation { to:  3; duration: 2200; easing.type: Easing.InOutSine }
-        NumberAnimation { to: -3; duration: 2400; easing.type: Easing.InOutSine }
-        NumberAnimation { to:  2; duration: 1800; easing.type: Easing.InOutSine }
-        NumberAnimation { to: -1; duration: 2000; easing.type: Easing.InOutSine }
-        NumberAnimation { to:  0; duration: 1600; easing.type: Easing.InOutSine }
+        NumberAnimation { to:  3 * carWrapper.motion; duration: 2200; easing.type: Easing.InOutSine }
+        NumberAnimation { to: -3 * carWrapper.motion; duration: 2400; easing.type: Easing.InOutSine }
+        NumberAnimation { to:  2 * carWrapper.motion; duration: 1800; easing.type: Easing.InOutSine }
+        NumberAnimation { to: -1 * carWrapper.motion; duration: 2000; easing.type: Easing.InOutSine }
+        NumberAnimation { to:  0;                     duration: 1600; easing.type: Easing.InOutSine }
     }
 
     Image {
@@ -94,22 +113,22 @@ Item {
         SequentialAnimation on y {
             loops: Animation.Infinite
             running: true
-            NumberAnimation { to:  0.4; duration: 60; easing.type: Easing.InOutSine }
-            NumberAnimation { to: -0.4; duration: 60; easing.type: Easing.InOutSine }
-            NumberAnimation { to:  0.3; duration: 55; easing.type: Easing.InOutSine }
-            NumberAnimation { to: -0.3; duration: 55; easing.type: Easing.InOutSine }
-            NumberAnimation { to:  0.0; duration: 60; easing.type: Easing.InOutSine }
+            NumberAnimation { to:  0.4 * carWrapper.motion; duration: 60; easing.type: Easing.InOutSine }
+            NumberAnimation { to: -0.4 * carWrapper.motion; duration: 60; easing.type: Easing.InOutSine }
+            NumberAnimation { to:  0.3 * carWrapper.motion; duration: 55; easing.type: Easing.InOutSine }
+            NumberAnimation { to: -0.3 * carWrapper.motion; duration: 55; easing.type: Easing.InOutSine }
+            NumberAnimation { to:  0.0;                     duration: 60; easing.type: Easing.InOutSine }
         }
 
         // body roll (tilt while swaying)
         SequentialAnimation on rotation {
             loops: Animation.Infinite
             running: true
-            NumberAnimation { to:  0.4; duration: 1100; easing.type: Easing.InOutSine }
-            NumberAnimation { to: -0.4; duration: 1200; easing.type: Easing.InOutSine }
-            NumberAnimation { to:  0.2; duration: 900;  easing.type: Easing.InOutSine }
-            NumberAnimation { to: -0.2; duration: 950;  easing.type: Easing.InOutSine }
-            NumberAnimation { to:  0.0; duration: 800;  easing.type: Easing.InOutSine }
+            NumberAnimation { to:  0.4 * carWrapper.motion; duration: 1100; easing.type: Easing.InOutSine }
+            NumberAnimation { to: -0.4 * carWrapper.motion; duration: 1200; easing.type: Easing.InOutSine }
+            NumberAnimation { to:  0.2 * carWrapper.motion; duration: 900;  easing.type: Easing.InOutSine }
+            NumberAnimation { to: -0.2 * carWrapper.motion; duration: 950;  easing.type: Easing.InOutSine }
+            NumberAnimation { to:  0.0;                     duration: 800;  easing.type: Easing.InOutSine }
         }
 
         // subtle scale breathing — the original animated 0.248..0.252 around a
@@ -118,8 +137,8 @@ Item {
         SequentialAnimation on scale {
             loops: Animation.Infinite
             running: true
-            NumberAnimation { to: 1.008; duration: 1400; easing.type: Easing.InOutSine }
-            NumberAnimation { to: 0.992; duration: 1400; easing.type: Easing.InOutSine }
+            NumberAnimation { to: 1.0 + 0.008 * carWrapper.motion; duration: 1400; easing.type: Easing.InOutSine }
+            NumberAnimation { to: 1.0 - 0.008 * carWrapper.motion; duration: 1400; easing.type: Easing.InOutSine }
         }
     }
 
@@ -140,21 +159,21 @@ Item {
         SequentialAnimation on opacity {
             loops: Animation.Infinite
             running: true
-            NumberAnimation { to: 0.55; duration: 700; easing.type: Easing.InOutSine }
-            NumberAnimation { to: 0.35; duration: 600; easing.type: Easing.InOutSine }
-            NumberAnimation { to: 0.50; duration: 800; easing.type: Easing.InOutSine }
-            NumberAnimation { to: 0.40; duration: 650; easing.type: Easing.InOutSine }
-            NumberAnimation { to: 0.45; duration: 700; easing.type: Easing.InOutSine }
+            NumberAnimation { to: 0.45 + 0.10 * carWrapper.motion; duration: 700; easing.type: Easing.InOutSine }
+            NumberAnimation { to: 0.45 - 0.10 * carWrapper.motion; duration: 600; easing.type: Easing.InOutSine }
+            NumberAnimation { to: 0.45 + 0.05 * carWrapper.motion; duration: 800; easing.type: Easing.InOutSine }
+            NumberAnimation { to: 0.45 - 0.05 * carWrapper.motion; duration: 650; easing.type: Easing.InOutSine }
+            NumberAnimation { to: 0.45;                            duration: 700; easing.type: Easing.InOutSine }
         }
 
         SequentialAnimation on scale {
             loops: Animation.Infinite
             running: true
-            NumberAnimation { to: 1.05; duration: 700; easing.type: Easing.InOutSine }
-            NumberAnimation { to: 0.95; duration: 600; easing.type: Easing.InOutSine }
-            NumberAnimation { to: 1.02; duration: 800; easing.type: Easing.InOutSine }
-            NumberAnimation { to: 0.98; duration: 650; easing.type: Easing.InOutSine }
-            NumberAnimation { to: 1.00; duration: 700; easing.type: Easing.InOutSine }
+            NumberAnimation { to: 1.0 + 0.05 * carWrapper.motion; duration: 700; easing.type: Easing.InOutSine }
+            NumberAnimation { to: 1.0 - 0.05 * carWrapper.motion; duration: 600; easing.type: Easing.InOutSine }
+            NumberAnimation { to: 1.0 + 0.02 * carWrapper.motion; duration: 800; easing.type: Easing.InOutSine }
+            NumberAnimation { to: 1.0 - 0.02 * carWrapper.motion; duration: 650; easing.type: Easing.InOutSine }
+            NumberAnimation { to: 1.0;                            duration: 700; easing.type: Easing.InOutSine }
         }
     }
 }

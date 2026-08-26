@@ -42,6 +42,30 @@ Item {
     width: 480
     height: 520
 
+    // ── speed ──────────────────────────────────────────────
+    //
+    // The scroll used to be two fixed-duration NumberAnimations (300 ms for
+    // the dashes, 600 ms for the streaks), so the road moved at the same rate
+    // whether the car was parked or at 200 km/h.
+    //
+    // speedKph now drives it. referenceSpeedKph is the speed at which the
+    // original hardcoded durations are reproduced exactly, so the look at a
+    // normal cruise is unchanged and everything else scales from it.
+    property real speedKph: 0
+    readonly property real referenceSpeedKph: 100
+
+    readonly property real speedFactor: speedKph / referenceSpeedKph
+
+    // Cycles per second at the current speed. 1000/300 and 1000/600 are the
+    // original rates, i.e. the value each of these takes at the reference
+    // speed.
+    readonly property real dashCyclesPerSec:   (1000 / 300) * speedFactor
+    readonly property real streakCyclesPerSec: (1000 / 600) * speedFactor
+
+    // Below this the car is stopped: freeze the scroll rather than creeping,
+    // and skip the per-frame work entirely.
+    readonly property bool rolling: speedKph > 0.5
+
     // ── shared road geometry ───────────────────────────────
     readonly property real vpX: width * 0.50
 
@@ -122,11 +146,16 @@ Item {
         visible: root.showDashes
 
         property real offset: 0.0
-        NumberAnimation on offset {
-            from: 0.0; to: 1.0
-            duration: 300
-            loops: Animation.Infinite
-            running: true
+
+        // Advance by rate * dt each frame rather than animating 0->1 over a
+        // fixed duration. Rebinding a running NumberAnimation's duration
+        // restarts it from `from`, and speed arrives at 20 Hz, so a
+        // duration-based version visibly jumped on every telemetry update.
+        // Accumulating is also just the honest model: distance += speed * dt.
+        FrameAnimation {
+            running: root.rolling && dashes.visible
+            onTriggered: dashes.offset =
+                (dashes.offset + root.dashCyclesPerSec * frameTime) % 1.0
         }
 
         Repeater {
@@ -182,11 +211,11 @@ Item {
         visible: root.showStreaks
 
         property real offset: 0.0
-        NumberAnimation on offset {
-            from: 0.0; to: 1.0
-            duration: 600
-            loops: Animation.Infinite
-            running: true
+
+        FrameAnimation {
+            running: root.rolling && streaks.visible
+            onTriggered: streaks.offset =
+                (streaks.offset + root.streakCyclesPerSec * frameTime) % 1.0
         }
 
         // Streak length is also constant: it spans a fixed 0.04 of t.
