@@ -44,6 +44,12 @@ Item {
 
     property int activeMask: VehicleData.dtc ? VehicleData.dtc.activeMask : 0
 
+    // Physical control that accepts the fault. The cluster receives it as
+    // BTN_OK on the wheel UDP socket; which button that is on the wheel is
+    // decided by the sender (--ok-button on the CARLA telemetry producer),
+    // so this is only the label shown to the driver.
+    property string acceptButtonLabel: "X"
+
     // Bits the driver has already dismissed. Cleared for any fault that goes
     // away, so a recurrence pops again instead of being silently swallowed.
     property int acknowledgedMask: 0
@@ -213,14 +219,37 @@ Item {
                 border.color: Theme.colorTextMuted
                 border.width: 1
 
-                Text {
+                // There is no touchscreen in the cockpit, so the label names
+                // the physical control rather than saying "OK" and leaving the
+                // driver to guess. acceptButtonLabel is a property so a
+                // different wheel does not need a QML edit.
+                Row {
                     anchors.centerIn: parent
-                    // The cluster has no touchscreen on the bench, so say
-                    // which wheel button clears it.
-                    text: "OK"
-                    color: Theme.colorTextPrimary
-                    font.family: Theme.fontSecondary
-                    font.pixelSize: Theme.fontSizeSmall
+                    spacing: Theme.spacingSmall
+
+                    Rectangle {
+                        width: 22; height: 22; radius: 11
+                        anchors.verticalCenter: parent.verticalCenter
+                        color: "transparent"
+                        border.color: Theme.colorTextPrimary
+                        border.width: 1
+                        Text {
+                            anchors.centerIn: parent
+                            text: faultPopup.acceptButtonLabel
+                            color: Theme.colorTextPrimary
+                            font.family: Theme.fontSecondary
+                            font.pixelSize: Theme.fontSizeTiny
+                            font.bold: true
+                        }
+                    }
+
+                    Text {
+                        anchors.verticalCenter: parent.verticalCenter
+                        text: "ACCEPT"
+                        color: Theme.colorTextPrimary
+                        font.family: Theme.fontSecondary
+                        font.pixelSize: Theme.fontSizeSmall
+                    }
                 }
                 MouseArea {
                     anchors.fill: parent
