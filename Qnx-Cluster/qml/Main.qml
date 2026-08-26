@@ -502,10 +502,14 @@ Window {
                         showBackdrop: root.roadBackdrop
                         showDashes: root.roadDashes
                         showStreaks: root.roadStreaks
+                        // Live speed: scroll rate follows the vehicle.
+                        speedKph: root.speedValue
                     }
 
                     Car {
                         id: carItem
+                        // Live speed: sway/vibration/roll scale with it.
+                        speedKph: root.speedValue
                         anchors.verticalCenter: parent.verticalCenter
                         anchors.verticalCenterOffset: 235 + root.carViewY
                         anchors.horizontalCenter: parent.horizontalCenter
